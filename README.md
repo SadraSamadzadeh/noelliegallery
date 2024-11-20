@@ -14,3 +14,5 @@
 - [ ] Delete button (w/ Server Actions)
 - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
+
+Video watched until : 34.27
