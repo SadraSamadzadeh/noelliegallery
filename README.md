@@ -16,4 +16,4 @@
 - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
 
-Video watched until : 52.21
+Video watched until : 55.55
