@@ -13,12 +13,14 @@ export default async function HomePage() {
       <div className="flex flex-wrap justify-center gap-4">
               {images.map((image, index) => (
             <div key={image.id + " - " + index} className="w-48 h-48 flex flex-col">
-              <Image src={image.url}
-               style={{ objectFit: "contain"} } 
-               alt={image.name} 
-               width={192}
-               height={192}
-               />
+              <Link href={`/img/${image.id}`}>
+                <Image src={image.url}
+                style={{ objectFit: "contain"} } 
+                alt={image.name} 
+                width={192}
+                height={192}
+                />
+              </Link>
               <div>{image.name}</div>
             </div>
           ))}
