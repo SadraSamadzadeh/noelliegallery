@@ -13,8 +13,13 @@
 - [X] User Next/Image component
 - [X] Error management (w/ Sentry)
 - [X] Routing/image page (parallel route)
+- [X] Update the upload button to be less cringe
+- [X] ShadUify (specifically toasts)
 - [ ] Delete button (w/ Server Actions)
 - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
 
-Video watched until : 55.55
+Video watched until : 2:18:37
+
+Shadcn ui animation for the toast doesnt work which is the main reason of using shadcn so figure it out
+
