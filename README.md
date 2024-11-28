@@ -16,10 +16,13 @@
 - [X] Update the upload button to be less cringe
 - [X] ShadUify (specifically toasts)
 - [ ] Delete button (w/ Server Actions)
-- [ ] Analytics (posthog)
-- [ ] Ratelimiting (upstash)
+- [ ] Change Sign In button 
+- [ ] Add landing page 
+- [ ] Add cute 404 page 
+- [ ] Add album schema 
+- [ ] Add album page using carousel 
 
-Video watched until : 2:18:37
+<!-- - [ ] Analytics (posthog)
+- [ ] Ratelimiting (upstash) -->
 
-Shadcn ui animation for the toast doesnt work which is the main reason of using shadcn so figure it out
-
+<!-- Video watched until : 2:18:37 -->

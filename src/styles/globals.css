@@ -4,67 +4,68 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 160 15% 10%; /* Deep forest green */
+    --foreground: 40 20% 95%; /* Soft beige */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 160 15% 12%; /* Slightly lighter green for cards */
+    --card-foreground: 40 20% 95%; /* Match foreground for readability */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 30 20% 15%; /* Rich brown for popovers */
+    --popover-foreground: 40 20% 95%; /* Soft beige foreground */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 160 30% 25%; /* Vibrant green for primary elements */
+    --primary-foreground: 40 30% 90%; /* Creamy white foreground */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 30% 70%; /* Muted golden tan for secondary elements */
+    --secondary-foreground: 160 30% 15%; /* Contrasting dark green */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 15% 25%; /* Subtle brownish-green for muted elements */
+    --muted-foreground: 40 15% 70%; /* Softer tan for muted text */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 20 40% 30%; /* Warm terracotta accent */
+    --accent-foreground: 40 20% 95%; /* Soft beige for accents */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 50% 30%; /* Brick red for destructive actions */
+    --destructive-foreground: 40 20% 95%; /* Soft beige */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 160 10% 25%; /* Neutral earthy green for borders */
+    --input: 160 15% 20%; /* Slightly darker green for inputs */
+    --ring: 160 30% 25%; /* Highlight green for focus rings */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Rounded corners */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 160 15% 8%; /* Darker green for dark mode */
+    --foreground: 40 20% 95%; /* Soft beige */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 160 15% 10%; /* Match background for cards */
+    --card-foreground: 40 20% 95%; /* Match foreground */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 20% 12%; /* Rich dark brown for popovers */
+    --popover-foreground: 40 20% 90%; /* Softer beige */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 160 30% 20%; /* Slightly darker green for primary */
+    --primary-foreground: 40 30% 85%; /* Creamy white */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 40 30% 60%; /* Muted golden tan */
+    --secondary-foreground: 160 30% 15%; /* Contrasting dark green */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 40 15% 20%; /* Deeper brownish-green for muted elements */
+    --muted-foreground: 40 15% 65%; /* Softer tan */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 20 40% 25%; /* Deeper terracotta accent */
+    --accent-foreground: 40 20% 90%; /* Soft beige */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 50% 25%; /* Dark brick red for destructive actions */
+    --destructive-foreground: 40 20% 90%; /* Softer beige */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 160 10% 20%; /* Neutral earthy green for borders */
+    --input: 160 15% 18%; /* Slightly darker green for inputs */
+    --ring: 160 30% 20%; /* Highlight green for focus rings */
   }
 }
+
 
 @layer base {
   * {
