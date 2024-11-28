@@ -14,6 +14,33 @@ export const metadata: Metadata = {
   description: "Chinchilla gallery",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
+import { getAlbums } from "~/server/queries";
+export const dynamic = "force-dynamic";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/components/ui/select"
+
+export async function ShowAlbums() {
+    const myAlbums = await getAlbums();
+    return (
+      <div className="flex flex-col justify-center items-center gap-3">
+          <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select an album" />
+        </SelectTrigger>
+        <SelectContent>
+            {myAlbums.map((album, index) => (
+              <SelectItem value={album.name} key={album.id + " - " + index}>{album.name}</SelectItem>
+            ))}
+        </SelectContent>
+      </Select>
+      </div>
+    )
+  }
 
 export default function RootLayout({
   children,
@@ -36,7 +63,9 @@ export default function RootLayout({
         />
         <body className="">
           <div className="h-screen grid grid-rows-[auto,1fr]">
-            <TopNav />
+            <TopNav>
+              <ShowAlbums />
+            </TopNav>
             <main className="overflow-y-scroll">
               {children}
             </main>

@@ -1,9 +1,11 @@
 "use client"
 
 import { SignIn, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { SimpleUploadButton } from "./simple-upload-button";
 import { cn } from "~/lib/utils"
-// import { Icons } from "~/components/icons"
+import { Button } from "~/components/ui/button"
+export function ButtonDemo() {
+  return <Button>Button</Button>
+}
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,12 +15,22 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "../../components/ui/navigation-menu";
+} from "~/components/ui/navigation-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter
+} from "~/components/ui/dialog"
 import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu"
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarLayout from "./navbar-layout";
-
+import { UploadButton } from "~/utils/uploadthing";
+import { numeric } from "drizzle-orm/pg-core";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -57,7 +69,55 @@ const components: { title: string; href: string; description: string }[] = [
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ]
-export default function TopNav() {
+export default function TopNav({children}) {
+  const UploadContent = () => {
+    const [uploadStep, setUploadStep] = useState(1);
+
+
+    const goToNextStep = () => {
+      setUploadStep(2);
+    }
+    return uploadStep == 2 ? (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button size={"lg"} variant={"outline"}>
+            Upload
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Upload Photos</DialogTitle>
+            <DialogDescription>
+              Choose the photos you want to upload.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    ) : uploadStep == 1 ? (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button size={"lg"} variant={"outline"}>
+            Upload
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Choose Album</DialogTitle>
+            <DialogDescription>
+              Choose an album to upload your photos to.
+            </DialogDescription>
+          </DialogHeader>
+          {children}
+          <DialogFooter>
+            <Button onClick={() => goToNextStep()}>Next Step</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    ): (
+      <div>Error</div>
+    )
+  };
+
   return (
     <NavbarLayout>
     <NavigationMenu>
@@ -88,8 +148,8 @@ export default function TopNav() {
               <ListItem href="/docs/installation" title="Installation">
                 How to install dependencies and structure your app.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/random-not-found" title="Not Found">
+                Go to 404 page for a cute surprise
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -118,8 +178,8 @@ export default function TopNav() {
           </Link>
         </NavigationMenuItem> 
             <SignedIn>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <SimpleUploadButton />
+              <NavigationMenuLink>
+               <UploadContent />
               </NavigationMenuLink>
             </SignedIn>
       </NavigationMenuList>
@@ -129,7 +189,9 @@ export default function TopNav() {
         <UserButton />          
     </SignedIn>
       <SignedOut>
-          <SignInButton />
+          <SignInButton>
+            <Button variant={"outline"}>Sign In</Button>
+          </SignInButton>
       </SignedOut>
     </div>
       

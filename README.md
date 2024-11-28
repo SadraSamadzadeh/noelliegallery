@@ -21,7 +21,9 @@
 - [ ] Add cute 404 page 
 - [ ] Add album schema 
 - [ ] Add album page using carousel 
-
+- [ ] The main upload button first has to go through all the albums and when one chosen u can upload photo
+- [ ] Add fonts (w/ Roboto)
+- [ ] Add music  
 <!-- - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash) -->
 
