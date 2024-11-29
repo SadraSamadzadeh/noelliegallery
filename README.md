@@ -16,14 +16,14 @@
 - [X] Update the upload button to be less cringe
 - [X] ShadUify (specifically toasts)
 - [ ] Delete button (w/ Server Actions)
-- [ ] Change Sign In button 
+- [X] Change Sign In button 
 - [ ] Add landing page 
-- [ ] Add cute 404 page 
-- [ ] Add album schema 
+- [X] Add cute 404 page 
+- [X] Add album schema 
+- [X] Add custom domain for the website 
 - [ ] Add album page using carousel 
-- [ ] The main upload button first has to go through all the albums and when one chosen u can upload photo
+- [X] The main upload button first has to go through all the albums and when one chosen u can upload photo
 - [ ] Add fonts (w/ Roboto)
-- [ ] Add music  
 <!-- - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash) -->
 
