@@ -20,7 +20,6 @@ export async function getMyImages() {
 export async function getAlbums() {
 
   const {userId}: {userId: string | null} = await auth();
-  console.log("userId", userId);
   if (!userId) throw new Error("Unauthorized");
 
   const albums = await db.query.albums.findMany({

@@ -3,22 +3,25 @@
 import { useRouter } from "next/navigation";
 import { useUploadThing } from "~/utils/uploadthing";
 import { toast } from "sonner";
-// import { usePostHog } from "posthog-js/react";
-
-// inferred input off useUploadThing
+import { Button } from "~/components/ui/button";
+import { NextResponse } from "next/server";
 type Input = Parameters<typeof useUploadThing>;
 
-const useUploadThingInputProps = (...args: Input) => {
+const useUploadThingInputProps = ( albumId: number,...args: Input) => {
   const $ut = useUploadThing(...args);
 
   const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
 
     const selectedFiles = Array.from(e.target.files);
-    const result = await $ut.startUpload(selectedFiles);
+
+    const albumData = {
+      albumId, 
+    };
+
+    const result = await $ut.startUpload(selectedFiles, albumData);
 
     console.log("uploaded files", result);
-    // TODO: persist result in state maybe?
   };
 
   return {
@@ -31,15 +34,6 @@ const useUploadThingInputProps = (...args: Input) => {
   };
 };
 
-function UploadSVG() {
-  return (
-    <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5.75V18.25"></path>
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.25 12L5.75 12"></path>
-</svg>
-
-  );
-}
 
 function LoadingSpinnerSVG() {
   return (
@@ -62,32 +56,41 @@ function LoadingSpinnerSVG() {
   );
 }
 
-export function SimpleUploadButton() {
+export function SimpleUploadButton({albumId}: {albumId: number}) {
   const router = useRouter();
 
-  // const posthog = usePostHog();
-
-  const { inputProps } = useUploadThingInputProps("imageUploader", {
+  const { inputProps } = useUploadThingInputProps(albumId, "imageUploader", {
     onUploadBegin() {
-      toast("Uploading...", {
-        duration: 100000,
-        id: "upload-begin",
-      });
+      toast(
+        <div className="flex items-center gap-2 text-white">
+          <LoadingSpinnerSVG /> <span className="text-lg">Uploading...</span>
+        </div>,
+        {
+          duration: 100000,
+          id: "upload-begin",
+        },
+      );
+    },
+    onUploadError(error) {
+      toast.dismiss("upload-begin");
+      toast.error("Upload failed");
     },
     onClientUploadComplete() {
-      toast.dismiss("upload-begin")
-      toast("Upload Complete!");
+      toast.dismiss("upload-begin");
+      toast("Upload complete!");
 
       router.refresh();
-    }
+    },
   });
 
   return (
-    <div className="flex gap-2 justify-center items-center">
-      <label htmlFor="upload-button" className="cursor-pointer">
-        Upload
-      </label>
-      <UploadSVG />
+    <div>
+      <Button variant={"secondary"}>
+        <label htmlFor="upload-button" className="cursor-pointer">
+          Upload
+        </label>
+      </Button>
+
       <input
         id="upload-button"
         type="file"

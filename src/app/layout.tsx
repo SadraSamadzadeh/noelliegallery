@@ -16,39 +16,20 @@ export const metadata: Metadata = {
 };
 import { getAlbums } from "~/server/queries";
 export const dynamic = "force-dynamic";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select"
 
-export async function ShowAlbums() {
-    const myAlbums = await getAlbums();
-    return (
-      <div className="flex flex-col justify-center items-center gap-3">
-          <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select an album" />
-        </SelectTrigger>
-        <SelectContent>
-            {myAlbums.map((album, index) => (
-              <SelectItem value={album.name} key={album.id + " - " + index}>{album.name}</SelectItem>
-            ))}
-        </SelectContent>
-      </Select>
-      </div>
-    )
-  }
+import UploadComponent from "~/components/upload-component";
 
-export default function RootLayout({
+
+
+
+export default async function RootLayout({
   children,
   modal,
 }: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
+  const myAlbums = await getAlbums();
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable} dark`}>
@@ -64,7 +45,7 @@ export default function RootLayout({
         <body className="">
           <div className="h-screen grid grid-rows-[auto,1fr]">
             <TopNav>
-              <ShowAlbums />
+              <UploadComponent myAlbums={myAlbums} />
             </TopNav>
             <main className="overflow-y-scroll">
               {children}

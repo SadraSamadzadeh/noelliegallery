@@ -9,28 +9,17 @@ export function ButtonDemo() {
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "~/components/ui/navigation-menu";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter
-} from "~/components/ui/dialog"
+
 import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu"
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import NavbarLayout from "./navbar-layout";
-import { UploadButton } from "~/utils/uploadthing";
-import { numeric } from "drizzle-orm/pg-core";
+import React from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -70,53 +59,6 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 export default function TopNav({children}) {
-  const UploadContent = () => {
-    const [uploadStep, setUploadStep] = useState(1);
-
-
-    const goToNextStep = () => {
-      setUploadStep(2);
-    }
-    return uploadStep == 2 ? (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button size={"lg"} variant={"outline"}>
-            Upload
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Upload Photos</DialogTitle>
-            <DialogDescription>
-              Choose the photos you want to upload.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-    ) : uploadStep == 1 ? (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button size={"lg"} variant={"outline"}>
-            Upload
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Choose Album</DialogTitle>
-            <DialogDescription>
-              Choose an album to upload your photos to.
-            </DialogDescription>
-          </DialogHeader>
-          {children}
-          <DialogFooter>
-            <Button onClick={() => goToNextStep()}>Next Step</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    ): (
-      <div>Error</div>
-    )
-  };
 
   return (
     <NavbarLayout>
@@ -179,7 +121,7 @@ export default function TopNav({children}) {
         </NavigationMenuItem> 
             <SignedIn>
               <NavigationMenuLink>
-               <UploadContent />
+               {children}
               </NavigationMenuLink>
             </SignedIn>
       </NavigationMenuList>

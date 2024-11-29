@@ -3,6 +3,7 @@ import { UploadThingError } from "uploadthing/server";
 import {auth} from '@clerk/nextjs/server';
 import { db } from "~/server/db";
 import { albumImages, images } from "~/server/db/schema";
+import { z } from "zod";
 const f = createUploadthing();
 
 
@@ -13,20 +14,21 @@ export const ourFileRouter = {
     image: {
       maxFileSize: "4MB",
       maxFileCount: 40,
-    },
+    }, 
   })
+  .input(
+    z.object({
+      albumId: z.number(),
+    })
+  )
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req }) => {
+    .middleware(async ({ req, input }) => {
       // This code runs on your server before upload
       const {userId}: {userId: string | null} = await auth();
-
-      // If you throw, the user will not be able to upload
       if (!userId) throw new UploadThingError("Unauthorized");
-
-      // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: userId };
+      return { userId: userId, albumId: input.albumId };
     })
-    .onUploadComplete(async ({ metadata, file }) => {
+    .onUploadComplete(async ({ file, metadata }) => {
       if (metadata.userId != null) {
         await db.insert(images).values({
           name: file.name,
@@ -34,6 +36,8 @@ export const ourFileRouter = {
           userId: metadata.userId,
         });
       }
+      console.log("finaly it might be working",metadata.albumId);
+      console.log("metadata:", metadata);
 
       return { uploadedBy: metadata.userId };
     }),
