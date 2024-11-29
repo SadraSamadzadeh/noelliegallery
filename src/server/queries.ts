@@ -46,3 +46,16 @@ export async function getImage(id: number) {
   return image;
 }
 
+export async function getLatestImage() {
+  const {userId}: {userId: string | null} = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const image = await db.query.images.findFirst({
+    where: (model, {eq}) => eq(model.userId, userId),
+    orderBy: (model, {desc}) => desc(model.id),
+  });
+  if (!image) throw new Error("Image not found");
+
+  return image;
+}
+
