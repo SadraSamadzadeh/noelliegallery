@@ -6,7 +6,7 @@ export async function getMyImages() {
 
     const {userId}: {userId: string | null} = await auth();
 
-    if (!userId) throw new Error("Unauthorized");
+    if (!userId) return {error: "Unauthorized"};
     
     const images = await db.query.images.findMany({
         where: (model, {eq}) => eq(model.userId, userId),
@@ -20,7 +20,8 @@ export async function getMyImages() {
 export async function getAlbums() {
 
   const {userId}: {userId: string | null} = await auth();
-  if (!userId) throw new Error("Unauthorized");
+  if (!userId) return {error: "Unauthorized"};
+
 
   const albums = await db.query.albums.findMany({
     where: (model, {eq}) => eq(model.userId, userId),
@@ -34,13 +35,15 @@ export async function getAlbums() {
 
 export async function getImage(id: number) {
   const {userId}: {userId: string | null} = await auth();
-  if (!userId) throw new Error("Unauthorized");
+  if (!userId) return {error: "Unauthorized"};
+
 
   const image = await db.query.images.findFirst({
     where: (model, {eq}) => eq(model.id, id),
   });
+  if (!image) return {error: "Image not found"};
 
-  if (!image) throw new Error("Image not found");
+  // if (!image) throw new Error("Image not found");
 
   if (image.userId != userId) throw new Error("Unauthorized");
   return image;
@@ -48,13 +51,15 @@ export async function getImage(id: number) {
 
 export async function getLatestImage() {
   const {userId}: {userId: string | null} = await auth();
-  if (!userId) throw new Error("Unauthorized");
+
+  if (!userId) return {error: "Unauthorized"};
+
 
   const image = await db.query.images.findFirst({
     where: (model, {eq}) => eq(model.userId, userId),
     orderBy: (model, {desc}) => desc(model.id),
   });
-  if (!image) throw new Error("Image not found");
+  if (!userId) return {error: "Image not found"};
 
   return image;
 }
