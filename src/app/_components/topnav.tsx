@@ -23,16 +23,16 @@ import React from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
+    title: "Noëlle Portfolio (Coming Soon)",
     href: "/docs/primitives/alert-dialog",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Beautifully designed portfolio for Noëlle and her artwork",
   },
   {
-    title: "Hover Card",
+    title: "Sadra Portfolio (Coming Soon)",
     href: "/docs/primitives/hover-card",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Software Engineering portfolio for Sadra and his work",
   },
   {
     title: "Progress",
@@ -85,10 +85,10 @@ export default function TopNav({children}) {
                 </NavigationMenuLink>
               </li>
               <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+                How the website works and stuff you know!
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/docs/installation" title="About">
+                About the project and Sadra (me :D)
               </ListItem>
               <ListItem href="/random-not-found" title="Not Found">
                 Go to 404 page for a cute surprise
