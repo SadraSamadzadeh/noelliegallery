@@ -37,13 +37,10 @@ export default async function HomePage() {
   return (
     <main className="">
       <SignedOut>
-        <div className="w-full h-full text-2xl text-center">
-          Please sign in above
-        </div>
+      <Hero/>
       </SignedOut>
       <SignedIn>
-        {/* <Images/> */}
-        <Hero/>
+        <Images/>
       </SignedIn>
       
     </main>

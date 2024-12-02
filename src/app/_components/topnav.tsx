@@ -61,7 +61,8 @@ const components: { title: string; href: string; description: string }[] = [
 export default function TopNav({children}) {
 
   return (
-    <NavbarLayout>
+    <div className="mb-10">
+      <NavbarLayout>
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
@@ -140,6 +141,8 @@ export default function TopNav({children}) {
 
       
     </NavbarLayout>
+    </div>
+    
   )
 }
 const ListItem = React.forwardRef<
@@ -168,30 +171,3 @@ const ListItem = React.forwardRef<
 })
 ListItem.displayName = "ListItem"
 
-
-
-
-
-
-
-// export default function TopNav() {
-//     return (
-//       <nav className="flex items-center justify-between w-full p-4 text-xl font-semibold border-b ">
-//         <div>
-//             Gallery
-//         </div>
-//         <div className="flex flex-row">
-
-//             <SignedOut>
-//                 <SignInButton />
-//             </SignedOut>
-//             <SignedIn>
-//               <SimpleUploadButton 
-//               />
-//                 <UserButton />
-//             </SignedIn>
-//         </div>
-//       </nav>
-//     )
-//   }
-  
