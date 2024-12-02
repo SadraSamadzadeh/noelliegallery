@@ -9,6 +9,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import React from "react";
 import { Toaster } from "~/components/ui/sonner";
+import { shadesOfPurple } from '@clerk/themes'
 export const metadata: Metadata = {
   title: "Noellie Gallery",
   description: "Chinchilla gallery",
@@ -31,7 +32,11 @@ export default async function RootLayout({
 }) {
   const myAlbums = await getAlbums();
   return (
-    <ClerkProvider>
+    <ClerkProvider 
+    appearance={ {
+      baseTheme: shadesOfPurple,
+    }}
+    >
       <html lang="en" className={`${GeistSans.variable} dark`}>
       <NextSSRPlugin
           /**

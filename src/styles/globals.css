@@ -1,70 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @layer base {
   :root {
-    --background: 160 15% 10%; /* Deep forest green */
-    --foreground: 40 20% 95%; /* Soft beige */
+    --background: 220 20% 7%; /* Deep blue for the main background */
+    --foreground: 280 30% 90%; /* Vibrant lavender for readability */
 
-    --card: 160 15% 12%; /* Slightly lighter green for cards */
-    --card-foreground: 40 20% 95%; /* Match foreground for readability */
+    --card: 220 20% 9%; /* Slightly lighter blue for cards */
+    --card-foreground: 280 30% 90%; /* Match foreground for readability */
 
-    --popover: 30 20% 15%; /* Rich brown for popovers */
-    --popover-foreground: 40 20% 95%; /* Soft beige foreground */
+    --popover: 260 40% 12%; /* Rich vibrant purple for popovers */
+    --popover-foreground: 280 30% 85%; /* Softer lavender */
 
-    --primary: 160 30% 25%; /* Vibrant green for primary elements */
-    --primary-foreground: 40 30% 90%; /* Creamy white foreground */
+    --primary: 280 50% 25%; /* Bright purple for primary elements */
+    --primary-foreground: 220 20% 95%; /* Bluish-white foreground */
 
-    --secondary: 40 30% 70%; /* Muted golden tan for secondary elements */
-    --secondary-foreground: 160 30% 15%; /* Contrasting dark green */
+    --secondary: 200 40% 25%; /* Muted teal for secondary elements */
+    --secondary-foreground: 280 50% 80%; /* Contrasting vibrant purple */
 
-    --muted: 40 15% 25%; /* Subtle brownish-green for muted elements */
-    --muted-foreground: 40 15% 70%; /* Softer tan for muted text */
+    --muted: 220 15% 15%; /* Subtle dark blue for muted elements */
+    --muted-foreground: 280 15% 65%; /* Softer purple-gray for muted text */
 
-    --accent: 20 40% 30%; /* Warm terracotta accent */
-    --accent-foreground: 40 20% 95%; /* Soft beige for accents */
+    --accent: 300 50% 25%; /* Rich magenta accent */
+    --accent-foreground: 280 30% 85%; /* Vibrant lavender for accents */
 
-    --destructive: 0 50% 30%; /* Brick red for destructive actions */
-    --destructive-foreground: 40 20% 95%; /* Soft beige */
+    --destructive: 0 60% 25%; /* Dark crimson for destructive actions */
+    --destructive-foreground: 280 30% 90%; /* Soft lavender */
 
-    --border: 160 10% 25%; /* Neutral earthy green for borders */
-    --input: 160 15% 20%; /* Slightly darker green for inputs */
-    --ring: 160 30% 25%; /* Highlight green for focus rings */
+    --border: 220 15% 20%; /* Neutral deep blue for borders */
+    --input: 220 20% 12%; /* Slightly lighter deep blue for inputs */
+    --ring: 280 50% 25%; /* Vibrant purple for focus rings */
 
     --radius: 0.5rem; /* Rounded corners */
   }
 
   .dark {
-    --background: 160 15% 8%; /* Darker green for dark mode */
-    --foreground: 40 20% 95%; /* Soft beige */
+    --background: 220 20% 6%; /* Darker blue for dark mode */
+    --foreground: 280 30% 90%; /* Vibrant lavender */
 
-    --card: 160 15% 10%; /* Match background for cards */
-    --card-foreground: 40 20% 95%; /* Match foreground */
+    --card: 220 20% 8%; /* Match background for cards */
+    --card-foreground: 280 30% 90%; /* Match foreground */
 
-    --popover: 30 20% 12%; /* Rich dark brown for popovers */
-    --popover-foreground: 40 20% 90%; /* Softer beige */
+    --popover: 260 40% 10%; /* Rich vibrant purple for popovers */
+    --popover-foreground: 280 30% 85%; /* Softer lavender */
 
-    --primary: 160 30% 20%; /* Slightly darker green for primary */
-    --primary-foreground: 40 30% 85%; /* Creamy white */
+    --primary: 280 50% 22%; /* Slightly darker vibrant purple for primary */
+    --primary-foreground: 220 20% 90%; /* Bluish-white */
 
-    --secondary: 40 30% 60%; /* Muted golden tan */
-    --secondary-foreground: 160 30% 15%; /* Contrasting dark green */
+    --secondary: 200 40% 20%; /* Muted teal */
+    --secondary-foreground: 280 50% 75%; /* Contrasting vibrant purple */
 
-    --muted: 40 15% 20%; /* Deeper brownish-green for muted elements */
-    --muted-foreground: 40 15% 65%; /* Softer tan */
+    --muted: 220 15% 12%; /* Deeper dark blue for muted elements */
+    --muted-foreground: 280 15% 60%; /* Softer purple-gray */
 
-    --accent: 20 40% 25%; /* Deeper terracotta accent */
-    --accent-foreground: 40 20% 90%; /* Soft beige */
+    --accent: 300 50% 20%; /* Deeper rich magenta accent */
+    --accent-foreground: 280 30% 85%; /* Vibrant lavender */
 
-    --destructive: 0 50% 25%; /* Dark brick red for destructive actions */
-    --destructive-foreground: 40 20% 90%; /* Softer beige */
+    --destructive: 0 60% 22%; /* Darker crimson for destructive actions */
+    --destructive-foreground: 280 30% 85%; /* Softer lavender */
 
-    --border: 160 10% 20%; /* Neutral earthy green for borders */
-    --input: 160 15% 18%; /* Slightly darker green for inputs */
-    --ring: 160 30% 20%; /* Highlight green for focus rings */
+    --border: 220 15% 18%; /* Neutral deep blue for borders */
+    --input: 220 20% 10%; /* Slightly darker deep blue for inputs */
+    --ring: 280 50% 20%; /* Vibrant purple for focus rings */
   }
 }
+
 
 
 @layer base {
@@ -72,7 +73,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-roboto;
   }
 }
 

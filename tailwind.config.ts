@@ -18,6 +18,16 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-gradient': 'radial-gradient(50% 50% at 16.8% 18.3%, white, rgb(182,148,255) 37.7%, rgb(24,0,66))',
+        'custom-gradient-2': 'radial-gradient(75% 75% at center center, rgb(140,69,255,.5) 15%, rgb(14, 0, 36, .5) 78%, transparent)',
+      },
+      boxShadow: {
+        'custom-shadow': '-20px -20px 50px rgba(255, 255, 255, 0.5), -20px -20px 80px rgba(255, 255, 255, 0.1), 0px 0px 50px rgba(140, 69, 255)  ',
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

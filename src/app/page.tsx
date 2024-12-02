@@ -2,6 +2,8 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { getAlbums, getMyImages } from "~/server/queries";
 import Image from "next/image";
+import { Fullscreen } from "lucide-react";
+import Hero from "~/components/hero";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
@@ -31,6 +33,7 @@ export default async function HomePage() {
       
     )
   }
+ 
   return (
     <main className="">
       <SignedOut>
@@ -39,7 +42,8 @@ export default async function HomePage() {
         </div>
       </SignedOut>
       <SignedIn>
-        <Images/>
+        {/* <Images/> */}
+        <Hero/>
       </SignedIn>
       
     </main>
