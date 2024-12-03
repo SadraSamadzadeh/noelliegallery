@@ -56,10 +56,9 @@ export default function AlbumsPage() {
             </div>
                 </CarouselItem>
             </CarouselContent>
+            </Link>
             <CarouselPrevious />
-            <CarouselNext />
-              </Link>
-            
+            <CarouselNext /> 
           </Carousel>
         ))}
       </div>

@@ -35,10 +35,10 @@ const components: { title: string; href: string; description: string }[] = [
       "Software Engineering portfolio for Sadra and his work",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Albums",
+    href: "/albums",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Take a look at all of your albums or add new ones",
   },
   {
     title: "Scroll-area",
