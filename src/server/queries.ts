@@ -86,4 +86,20 @@ export async function getImageByAlbumId(albumId: number) {
   
   return images;
 }
+export async function get3LatestAlbumImages (albumId: number) {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
 
+  const imagesInAlbumImages = await db.query.albumImages.findMany({
+    where: (model, {eq}) => eq(model.albumId, albumId),
+  });
+
+  const ids = imagesInAlbumImages.map((image) => image.imageId);
+
+  const latest3Images = await db.query.images.findMany({
+    where: (images, { inArray }) => inArray(images.id, ids),
+    orderBy: (model, {desc}) => desc(model.id),
+    limit: 3,
+  });
+  return latest3Images;
+}

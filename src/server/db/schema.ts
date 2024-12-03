@@ -74,3 +74,4 @@ export const albumImages = createTable(
     compositePrimaryKey: primaryKey(example.albumId, example.imageId),
   })
 );
+

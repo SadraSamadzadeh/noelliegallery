@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAlbums } from '~/server/queries'
+import { get3LatestAlbumImages, getAlbums } from '~/server/queries'
 import { Card, CardContent } from "~/components/ui/card"
 import {
   Carousel,
@@ -19,9 +19,44 @@ export default function AlbumsPage() {
 
 
 
+  async function LatestImages({albumId}) {
+    const latestImages = await get3LatestAlbumImages(albumId); 
+    if (!latestImages || latestImages.length === 0) {
+      return (
+        <CarouselItem>
+        <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <div>No Images</div>
+                </CardContent>
+              </Card>
+        </div>
+      </CarouselItem>
+      )
+    }
+    return (
+      <>
+      {latestImages.map((images, index) => (
+        <CarouselItem key={images.id + " - " + index}>
+        <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <img src={images.url} alt='image'/>
+                </CardContent>
+              </Card>
+        </div>
+      </CarouselItem>
+      ))}
+      </>
+     )  
+  }
+
+
+
 
   async function Albums() {
   const albums = await getAlbums();
+
     return (
       <div className='flex flex-row flex-wrap gap-40 items-center justify-center'>
         {albums.map((album, index) => (
@@ -37,24 +72,7 @@ export default function AlbumsPage() {
               </Card>
             </div>
               </CarouselItem>
-              <CarouselItem>
-              <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                <img src='/images.png' alt='image'/>
-                </CardContent>
-              </Card>
-            </div>
-              </CarouselItem>
-              <CarouselItem>
-              <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                <img src='/images.png' alt='image'/>
-                </CardContent>
-              </Card>
-            </div>
-                </CarouselItem>
+                <LatestImages albumId={album.id}/>
             </CarouselContent>
             </Link>
             <CarouselPrevious />

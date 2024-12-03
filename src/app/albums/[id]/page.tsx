@@ -11,7 +11,6 @@ export default function OneAlbum({params}) {
 
   async function Images() {
     const {id} = params;
-    console.log(id);
     const imagesInAlbum = await getImageByAlbumId(id);
     return (
     <div>
