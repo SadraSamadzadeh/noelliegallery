@@ -1,5 +1,5 @@
 import React from 'react'
-import { get3LatestAlbumImages, getAlbums } from '~/server/queries'
+import { get3LatestAlbumImages, getAlbums, makeAlbum } from '~/server/queries'
 import { Card, CardContent, CardFooter, CardHeader } from "~/components/ui/card"
 import {
   Carousel,
@@ -12,16 +12,18 @@ import Link from 'next/link'
 import { Button } from '~/components/ui/button'
 import { DialogTrigger } from '@radix-ui/react-dialog'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~/components/ui/dialog'
-export default function AlbumsPage() {
+import { Input } from "~/components/ui/input"
+import { postAlbum } from './postAlbum'
+import SubmitButton from './create-album-button'
 
+export default function AlbumsPage() {
   return (
     <div>
-      <Albums/>
+      <AlbumsSection/>
     </div>
   )
 
-
-
+  //async function for getting the latest images 
   async function LatestImages({albumId}) {
     const latestImages = await get3LatestAlbumImages(albumId); 
     if (!latestImages || latestImages.length === 0) {
@@ -56,10 +58,9 @@ export default function AlbumsPage() {
 
 
 
-
-  async function Albums() {
+//async function for getting the albums to show on the page 
+  async function AlbumsSection() {
   const albums = await getAlbums();
-
     return (
       <div className='flex flex-col gap-10'>
       <div className='flex flex-row flex-wrap gap-40 items-center justify-center'>
@@ -88,32 +89,32 @@ export default function AlbumsPage() {
             <CarouselNext /> 
           </Carousel>
         ))}
-        <div className='flex flex-col gap-10 items-center justify-center'>
+      <div className='flex flex-col gap-10 items-center justify-center'>
           <Card className='relative w-full max-w-xs'>
           <Dialog>
                 <DialogTrigger  asChild>
-                  <CardContent className='p-20 hover:cursor-pointer'>
+                <CardContent className='p-20 hover:cursor-pointer'>
                 <img src={'/add.png'} alt='image' />
               </CardContent>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Choose Album & Upload Photos</DialogTitle>
+          <DialogTitle>Add Album</DialogTitle>
           <DialogDescription>
-            Select your album and upload photos to it.
+            Create your album here
           </DialogDescription>
         </DialogHeader>
+        <Input placeholder='Album Name'/>
         <DialogFooter>
-          {/* <SimpleUploadButton albumId={selectedAlbumId} /> */}
+          <SubmitButton albumName="does this work?"/>
         </DialogFooter>
       </DialogContent>
-              </Dialog>
-            
-          </Card>
+      </Dialog>
+    </Card>
           <div>
             Add Album
           </div>
-        </div>
+    </div>
         
       </div>
       </div> 

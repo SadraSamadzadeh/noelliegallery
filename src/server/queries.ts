@@ -1,9 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import "server-only";
 import { db } from "~/server/db";
-import { albumImages } from "./db/schema";
-import { images } from "./db/schema";
-import { eq } from "drizzle-orm";
+import { albums } from "./db/schema";
 
 export async function getMyImages() {
 
@@ -102,4 +100,23 @@ export async function get3LatestAlbumImages (albumId: number) {
     limit: 3,
   });
   return latest3Images;
+}
+
+
+export async function makeAlbum(name: string) {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+
+  try {
+    const addAlbum = await db.insert(albums).values({
+      userId: userId,
+      name: name,
+      createdAt: new Date(),
+    }).returning();
+    return addAlbum;
+  }catch(error) {
+    console.error("Error adding album:", error);
+    return {error: "Error adding album"};
+  }
+  
 }
