@@ -1,6 +1,6 @@
 import React from 'react'
 import { get3LatestAlbumImages, getAlbums } from '~/server/queries'
-import { Card, CardContent } from "~/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "~/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -70,6 +70,11 @@ export default function AlbumsPage() {
                 <img src='/images.png' alt='image'/>
                 </CardContent>
               </Card>
+            </div>
+            <div>
+            <CardHeader className='text-center'>
+                  {album.name}
+              </CardHeader>
             </div>
               </CarouselItem>
                 <LatestImages albumId={album.id}/>
