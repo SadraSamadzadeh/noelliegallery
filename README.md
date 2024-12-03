@@ -23,7 +23,7 @@
 - [X] The main upload button first has to go through all the albums and when one chosen u can upload photo
 - [X] Add fonts (w/ Roboto)
 - [ ] Delete button (w/ Server Actions)
-- [ ] Add album page using carousel (currently doing)
+- [X] Add album page using carousel
 - [ ] Add the option to add an album
 - [ ] Check what is the problem with uploading multiple images 
 - [ ] User has to have default album if they currently don't have one  
