@@ -1,6 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 import "server-only";
 import { db } from "~/server/db";
+import { albumImages } from "./db/schema";
+import { images } from "./db/schema";
+import { eq } from "drizzle-orm";
 
 export async function getMyImages() {
 
@@ -62,5 +65,25 @@ export async function getLatestImage() {
   if (!userId) return {error: "Image not found"};
 
   return image;
+}
+
+export async function getImageByAlbumId(albumId: number) {
+  const {userId}: {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+
+
+
+  const imagesInAlbumImages = await db.query.albumImages.findMany({
+    where: (model, {eq}) => eq(model.albumId, albumId),
+  });
+
+  const ids = imagesInAlbumImages.map((image) => image.imageId);
+
+  const images = await db.query.images.findMany({
+    where: (images, { inArray }) => inArray(images.id, ids),
+  });
+
+  
+  return images;
 }
 

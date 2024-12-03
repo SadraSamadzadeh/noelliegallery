@@ -1,8 +1,7 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
-import { getAlbums, getMyImages } from "~/server/queries";
+import {getMyImages } from "~/server/queries";
 import Image from "next/image";
-import { Fullscreen } from "lucide-react";
 import Hero from "~/components/hero";
 export const dynamic = "force-dynamic";
 
@@ -11,7 +10,6 @@ export default async function HomePage() {
   
   async function Images() {
   const images = await getMyImages();
-  const albums = await getAlbums();
     return (
       <div>
           <div className="flex flex-wrap justify-center gap-4 p-4">
@@ -42,7 +40,6 @@ export default async function HomePage() {
       <SignedIn>
         <Images/>
       </SignedIn>
-      
     </main>
   );
 }

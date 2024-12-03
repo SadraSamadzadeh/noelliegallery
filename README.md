@@ -15,16 +15,17 @@
 - [X] Routing/image page (parallel route)
 - [X] Update the upload button to be less cringe
 - [X] ShadUify (specifically toasts)
-- [ ] Delete button (w/ Server Actions)
 - [X] Change Sign In button 
-- [ ] Add landing page 
+- [X] Add landing page 
 - [X] Add cute 404 page 
 - [X] Add album schema 
 - [X] Add custom domain for the website 
-- [ ] Add album page using carousel 
+- [ ] Delete button (w/ Server Actions)
+- [ ] Add album page using carousel (currently doing)
+- [ ] Add the option to add an album
+- [ ] Add the field in the database where you can upload an image for the album
+- [ ] Check what is the problem with uploading multiple images 
+- [ ] User has to have default album if they currently don't have one  
+- [ ] Make the backend
 - [X] The main upload button first has to go through all the albums and when one chosen u can upload photo
-- [ ] Add fonts (w/ Roboto)
-<!-- - [ ] Analytics (posthog)
-- [ ] Ratelimiting (upstash) -->
-
-<!-- Video watched until : 2:18:37 -->
+- [X] Add fonts (w/ Roboto)
