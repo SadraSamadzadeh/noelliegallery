@@ -114,7 +114,7 @@ export default function AlbumsPage() {
           <div>
             Add Album
           </div>
-    </div>
+    </div>  
         
       </div>
       </div> 
