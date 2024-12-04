@@ -26,9 +26,10 @@
 - [X] Add fonts (w/ Roboto)
 - [ ] Delete button (w/ Server Actions)
 - [X] Add album page using carousel
-- [ ] Add the option to add an album
+- [X] Add the option to add an album
+- [ ] Create basic UI stuff for pages to be responsive and also make the home page --> figure out the scroll method when u click something on the navbar 
 - [ ] Check what is the problem with uploading multiple images 
 - [ ] User has to have default album if they currently don't have one  
-- [ ] Make the backend
+- [ ] Make the backend --> create in next js for futher auth stuff 
 - [O] Add the field in the database where you can upload an image for the album --> this would mean that i have to upload images for the album which takes up more space and it's not cost friendly for 
 - my current solution
