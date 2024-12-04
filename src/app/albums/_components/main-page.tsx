@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -25,10 +25,12 @@ import {
   DialogTitle,
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
+import { makeAlbum } from "~/server/queries";
 // import SubmitButton from './create-album-button'
 
 //async function for getting the albums to show on the page
 export function AlbumsPage({ children }: { children?: React.ReactNode }) {
+  const [name, setName] = useState("");
   return (
     <>
       {children}
@@ -45,9 +47,15 @@ export function AlbumsPage({ children }: { children?: React.ReactNode }) {
                 <DialogTitle>Add Album</DialogTitle>
                 <DialogDescription>Create your album here</DialogDescription>
               </DialogHeader>
-              <Input placeholder="Album Name" />
+              <Input onChange={(e) => setName(e.target.value)} placeholder="Album Name" />
               <DialogFooter>
-                {/* <SubmitButton albumName="does this work?" /> */}
+                <Button
+                onClick={async () => {
+                  await makeAlbum(name);
+                }
+
+                }
+                >Create</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
