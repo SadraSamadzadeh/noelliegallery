@@ -53,11 +53,11 @@ export function AlbumsPage({ children }: { children?: React.ReactNode }) {
                     try {
                       await makeAlbum(name); // Replace this with your actual function
                       router.refresh();
-                      setOpen(false);
                       toast.success("Album created successfully!");
                     } catch (error) {
                       toast.error("Failed to create album. Please try again.");
                     }
+                    setOpen(false);
                   }}
                 >
                   Create
