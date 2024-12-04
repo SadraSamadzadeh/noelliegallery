@@ -1,4 +1,5 @@
 import React from 'react'
+import { Toaster } from 'sonner'
 
 export default function layout({
     children
@@ -8,6 +9,7 @@ export default function layout({
   return (
     <div className='p-10'>
         {children}
+        <Toaster />
     </div>
   )
 }
