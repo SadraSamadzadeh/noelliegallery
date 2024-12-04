@@ -1,13 +1,13 @@
 import React from 'react'
-import {getAlbums} from '../../../server/queries'
-import { Card, CardContent, CardFooter, CardHeader } from "../../../components/ui/card"
+import {getAlbums} from '~/server/queries'
+import { Card, CardContent, CardFooter, CardHeader } from "~/components/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../../../components/ui/carousel"
+} from "~/components/ui/carousel"
 import Link from 'next/link'
 import { LatestImages } from './latest-images'
 

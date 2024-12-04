@@ -1,14 +1,14 @@
  //async function for getting the latest images 
  import React from 'react'
- import {get3LatestAlbumImages} from '../../../server/queries'
- import { Card, CardContent, CardFooter, CardHeader } from "../../../components/ui/card"
+ import {get3LatestAlbumImages} from '~/server/queries'
+ import { Card, CardContent, CardFooter, CardHeader } from "~/components/ui/card"
  import {
    Carousel,
    CarouselContent,
    CarouselItem,
    CarouselNext,
    CarouselPrevious,
- } from "../../../components/ui/carousel"
+ } from "~/components/ui/carousel"
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import { AlbumsPage } from './main-page'
-import {AlbumSection} from './albums-section'
+import { AlbumsPage } from './_components/main-page'
+import { AlbumSection } from './_components/albums-section'
 
 export default function Page() {
   return (
@@ -8,7 +8,7 @@ export default function Page() {
       <AlbumsPage>
         <AlbumSection />
       </AlbumsPage>
-    </div>
+    </div>  
   )
 }
 
