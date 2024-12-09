@@ -11,10 +11,18 @@
  } from "~/components/ui/carousel"
 
 
-
- export async function LatestImages({albumId}) {
-  const latestImages = await get3LatestAlbumImages(albumId); 
-  if (!latestImages || latestImages.length === 0) {
+ type Image = {
+   id: number,
+   name: string,
+   url: string,
+   createdAt: Date,
+   updatedAt: Date | null,
+   userId: string,
+ }
+ 
+ export async function LatestImages({albumId} : {albumId: number}) {
+  const latestImages : Image[] | {error: string} = await get3LatestAlbumImages(albumId); 
+  if (!latestImages || Array.isArray(latestImages) && latestImages.length === 0) {
     return (
       <CarouselItem>
       <div className="p-1">
@@ -29,7 +37,7 @@
   }
   return (
     <>
-    {latestImages.map((images, index) => (
+    {Array.isArray(latestImages) ? (latestImages.map((images : Image, index : number) => (
     <CarouselItem key={images.id + " - " + index}>
         <div className="p-1">
               <Card>
@@ -39,7 +47,9 @@
               </Card>
         </div>
     </CarouselItem>
-    ))}
+    ))) : (
+      <div>Error: {latestImages.error}</div>
+    )}
     </>
    )  
 }

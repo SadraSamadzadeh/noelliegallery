@@ -9,8 +9,6 @@
 - [X] Attach database to UI
 - [X] Add authentication (w/ clerk)
 - [X] Add image upload   
-
-
 - [X] "taint" (server-only)
 - [X] User Next/Image component
 - [X] Error management (w/ Sentry)
@@ -24,12 +22,12 @@
 - [X] Add custom domain for the website 
 - [X] The main upload button first has to go through all the albums and when one chosen u can upload photo
 - [X] Add fonts (w/ Roboto)
-- [ ] Delete button (w/ Server Actions)
 - [X] Add album page using carousel
 - [X] Add the option to add an album
+- [ ] Delete button (w/ Server Actions) --> for images and albums
 - [ ] Create basic UI stuff for pages to be responsive and also make the home page --> figure out the scroll method when u click something on the navbar 
 - [ ] Check what is the problem with uploading multiple images 
 - [ ] User has to have default album if they currently don't have one  
 - [ ] Make the backend --> create in next js for futher auth stuff 
-- [O] Add the field in the database where you can upload an image for the album --> this would mean that i have to upload images for the album which takes up more space and it's not cost friendly for 
-- my current solution
+- [O] Add the field in the database where you can upload an image for the album --> 
+-     this would mean that i have to upload images for the album which takes up more space and it's not cost friendly for my current solution
