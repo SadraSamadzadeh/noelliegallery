@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from './ui/button'
 import starsBg from '~/../public/stars.png'
-import { SignInButton } from '@clerk/nextjs'
+import { SignedIn, SignInButton } from '@clerk/nextjs'
 
 export default function hero() {
   return (
@@ -34,9 +34,12 @@ export default function hero() {
            className='md:text-xl text-lg text-white-/70 mt-5 text-center max-w-xl mx-auto'
            >Beautifully designed gallery for uploading your photos</p>
            <div className='flex justify-center mt-5'>
-           <SignInButton>
-            <Button>Sign In</Button>
-          </SignInButton>
+
+          <SignedIn>
+            <SignInButton>
+              <Button>Sign In</Button>
+            </SignInButton>
+          </SignedIn>
            </div>
         </div>
     </section>

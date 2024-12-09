@@ -27,7 +27,8 @@
 - [ ] Delete button (w/ Server Actions) --> for images and albums
 - [ ] Create basic UI stuff for pages to be responsive and also make the home page --> figure out the scroll method when u click something on the navbar 
 - [ ] Check what is the problem with uploading multiple images 
-- [ ] User has to have default album if they currently don't have one  
+- [ ] User has to have default album if they currently don't have one --> this can be changed into making a function to check that and if they have no albums you let them know they -     can create one  
 - [ ] Make the backend --> create in next js for futher auth stuff 
 - [O] Add the field in the database where you can upload an image for the album --> 
 -     this would mean that i have to upload images for the album which takes up more space and it's not cost friendly for my current solution
+=

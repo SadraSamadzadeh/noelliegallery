@@ -58,7 +58,7 @@ const components: { title: string; href: string; description: string }[] = [
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
 ]
-export default function TopNav({children}) {
+export default function TopNav({children} : {children: React.ReactNode}) {
 
   return (
     <div className="mb-10">
@@ -132,7 +132,7 @@ export default function TopNav({children}) {
         <UserButton />          
     </SignedIn>
       <SignedOut>
-          <SignInButton>
+          <SignInButton >
             <Button variant={"outline"}>Sign In</Button>
           </SignInButton>
       </SignedOut>

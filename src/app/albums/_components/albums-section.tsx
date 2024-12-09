@@ -10,13 +10,19 @@ import {
 } from "~/components/ui/carousel"
 import Link from 'next/link'
 import { LatestImages } from './latest-images'
-
+type Album = {
+  id: number,
+  name: string,
+  createdAt: Date,
+  updatedAt: Date | null,
+  userId: string,
+}
 export async function AlbumSection() {
-    const albums = await getAlbums();
+    const albums : Album[] | {error: string} = await getAlbums();
     return (
 <div className='flex flex-col gap-10'>
   <div className='flex flex-row flex-wrap gap-40 items-center justify-center'>
-  {albums.map((album, index) => (
+  {Array.isArray(albums) ? (albums.map((album : Album, index : number) => (
       <Carousel className='w-full max-w-xs'>
         <Link href={`/albums/${album.id}`}>
         <CarouselContent>
@@ -40,7 +46,12 @@ export async function AlbumSection() {
       <CarouselPrevious />
       <CarouselNext /> 
     </Carousel>
-  ))}
+  )))
+  :
+  (
+    <div>Error: {albums.error}</div>
+  )
+}
   </div>
 </div> 
     )

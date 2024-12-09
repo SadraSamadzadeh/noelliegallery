@@ -14,7 +14,6 @@ export default function Page() {
       <SignedOut>
         <div>You are not signed in</div>
       </SignedOut>
-      
     </div>  
   )
 }
