@@ -112,7 +112,7 @@ export default function MainBody() {
         <div id="#right-container" className='flex flex-col items-center justify-between w-1/2 gap-5'> 
 
             <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[500px]'>
-              {albums.map((album, index) => (
+              {albums.length > 0 && albums.map((album, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={album.id + " - " + index}>
                 <div id="#icon">
                     <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -133,14 +133,10 @@ export default function MainBody() {
                   </div>
             </div>
               ))}
+              {albums.length === 0 && <div>No Albums</div>}
             </div>
-
             <div id="#latest-images-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[500px]'>
-            {images.map((image, index) => (
-              <>
-               {!images ? (
-                <div key={image.id + " - " + index}>No Images In This Date Range</div>
-              ) : (
+            {images.length > 0 && images.map((image, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={image.id + " - " + index}>
                 <div id="#icon">
                     <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -159,10 +155,9 @@ export default function MainBody() {
                               <div>{image.createdAt.toLocaleDateString()}</div>   
                       </div>   
                   </div>
-            </div>
-              )}  
-              </>    
+            </div>   
               ))}
+              {images.length === 0 && <div>No Images</div>}
             </div>
         </div>
     </div>

@@ -2,8 +2,8 @@
 import { auth } from "@clerk/nextjs/server";
 import "server-only";
 import { db } from "~/server/db";
-import { and, gte, lte, eq } from "drizzle-orm";
 import { albums } from "./db/schema";
+import { get } from "http";
 
 export async function getMyImages() {
 
@@ -129,14 +129,10 @@ export async function getImagesByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getImages = await db.query.images.findMany({
-      where: (model) => 
-        and(
-          gte(model.createdAt, startingDate),
-          lte(model.createdAt, endingDate),
-          eq(model.userId, userId)
-        )
+      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      orderBy: (model, {desc}) => desc(model.createdAt),
     });
-    return getImages;
+    return getImages.filter((image) => image.userId === userId);
   }catch(error) {
     console.error("Error getting images by date:", error);
     return {error: "Error getting images by date"};
@@ -148,14 +144,10 @@ export async function getAlbumsByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getAlbums = await db.query.albums.findMany({
-      where: (model) => 
-        and(
-          gte(model.createdAt, startingDate),
-          lte(model.createdAt, endingDate),
-          eq(model.userId, userId)
-        )
+      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      orderBy: (model, {desc}) => desc(model.createdAt),
     });
-    return getAlbums;
+    return getAlbums.filter((album) => album.userId === userId);
   }catch(error) {
     console.error("Error getting images by date:", error);
     return {error: "Error getting images by date"};
