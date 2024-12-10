@@ -2,6 +2,7 @@
 import React from 'react' 
 import { Bar, BarChart,  CartesianGrid, XAxis  } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
+import InfoBar from './info-bar'
 export default function MainBody() {
     const chartData = [
         { month: "January", desktop: 186, mobile: 80 },
@@ -25,17 +26,37 @@ export default function MainBody() {
   return (
     <div className='w-full border rounded-xl border-gray-400  bg-gray-800 p-10 flex'>
         <div id="#left-container" className='flex flex-col items-center justify-between w-1/2 gap-10'>
-            <div className='flex items-center justify-between gap-4 w-full'>
-                <div className='bg-gray-600 rounded-lg w-32 h-10'>
-
+        {/* this is for more stuff later when we have more data to show as analytics but it will be mentioned here only so that next time it would be easy to config */}
+            {/* <div className='flex items-center justify-between gap-4 w-full'>
+                <div id="#total-albums" className='bg-gray-600 rounded-lg p-5'>
+                <ChartContainer config={chartConfig2} className="h-[200px] w-full">
+                <BarChart accessibilityLayer data={chartData2}>
+                    <XAxis
+                    dataKey="month"
+                    tickLine={false}
+                    tickMargin={10}
+                    axisLine={false}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                    />
+                    <Bar dataKey="albums" fill="var(--color-albums)" radius={4} />
+                </BarChart>
+                </ChartContainer>
                 </div>
-                <div className='bg-gray-600 rounded-lg w-32 h-10'>
-
+                <div id="#total-images" className='bg-gray-600 rounded-lg p-5'>
+                <ChartContainer config={chartConfig2} className="h-[200px] w-full">
+                <BarChart accessibilityLayer data={chartData2}>
+                    <XAxis
+                    dataKey="month"
+                    tickLine={false}
+                    tickMargin={10}
+                    axisLine={false}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                    />
+                    <Bar dataKey="albums" fill="var(--color-albums)" radius={4} />
+                </BarChart>
+                </ChartContainer>
                 </div>
-                <div className='bg-gray-600 rounded-lg w-32 h-10'>
-
-                </div>
-            </div>
+            </div> */}
             <div id="#chart-container" className='w-full'>
                 {/* <div id="#chart" className="h-[250px] bg-gray-600 rounded-lg"></div> */}
             <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -54,16 +75,40 @@ export default function MainBody() {
                 </BarChart>
                 </ChartContainer>
             </div>
-            <div id="#lower-sub-container" className='w-full'>
-                <div className='bg-gray-600 rounded-lg h-[100px]'></div>
-            </div>
         </div>
-        <div id="#right-container" className='flex flex-col items-center justify-between w-1/2'> 
-            <div>
-                    
+        <div id="#right-container" className='flex flex-col items-center justify-between w-1/2 gap-5'> 
+            <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[500px]'>
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+
+
             </div>
-            <div>
-                    
+            <div id="#latest-images-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[500px]'>
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+                <InfoBar />
+
             </div>
         </div>
     </div>
