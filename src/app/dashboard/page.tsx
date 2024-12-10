@@ -1,7 +1,9 @@
 import React from 'react'
-
-export default function Page() {
+import Header from './_components/header'
+export default function DashboardPage() {
   return (
-    <div>Hey  this is the dashboard page</div>
+    <div>
+       <Header />
+    </div>
   )
 }
