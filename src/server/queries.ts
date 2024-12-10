@@ -128,7 +128,7 @@ export async function getImagesByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getImages = await db.query.images.findMany({
-      where: (model, {gte, lte}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate) && eq(model.userId, userId),
       orderBy: (model, {desc}) => desc(model.createdAt),
     });
     return getImages;
@@ -143,7 +143,7 @@ export async function getAlbumsByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getAlbums = await db.query.albums.findMany({
-      where: (model, {gte, lte}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate) && eq(model.userId, userId),
       orderBy: (model, {desc}) => desc(model.createdAt),
     });
     return getAlbums;

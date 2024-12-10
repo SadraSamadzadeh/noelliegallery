@@ -31,4 +31,4 @@
 - [ ] Make the backend --> create in next js for futher auth stuff 
 - [O] Add the field in the database where you can upload an image for the album --> 
 -     this would mean that i have to upload images for the album which takes up more space and it's not cost friendly for my current solution
-=
+- [ ] albums and images in the dashboard should be only visible to the user who is signed in
