@@ -2,6 +2,7 @@
 import { auth } from "@clerk/nextjs/server";
 import "server-only";
 import { db } from "~/server/db";
+import { and, gte, lte, eq } from "drizzle-orm";
 import { albums } from "./db/schema";
 
 export async function getMyImages() {
@@ -128,8 +129,12 @@ export async function getImagesByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getImages = await db.query.images.findMany({
-      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate) && eq(model.userId, userId),
-      orderBy: (model, {desc}) => desc(model.createdAt),
+      where: (model) => 
+        and(
+          gte(model.createdAt, startingDate),
+          lte(model.createdAt, endingDate),
+          eq(model.userId, userId)
+        )
     });
     return getImages;
   }catch(error) {
@@ -143,8 +148,12 @@ export async function getAlbumsByDate(startingDate: Date, endingDate: Date) {
 
   try {
     const getAlbums = await db.query.albums.findMany({
-      where: (model, {gte, lte, eq}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate) && eq(model.userId, userId),
-      orderBy: (model, {desc}) => desc(model.createdAt),
+      where: (model) => 
+        and(
+          gte(model.createdAt, startingDate),
+          lte(model.createdAt, endingDate),
+          eq(model.userId, userId)
+        )
     });
     return getAlbums;
   }catch(error) {
