@@ -121,3 +121,34 @@ export async function makeAlbum(name: string) {
   }
   
 }
+
+export async function getImagesByDate(startingDate: Date, endingDate: Date) {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+
+  try {
+    const getImages = await db.query.images.findMany({
+      where: (model, {gte, lte}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      orderBy: (model, {desc}) => desc(model.createdAt),
+    });
+    return getImages;
+  }catch(error) {
+    console.error("Error getting images by date:", error);
+    return {error: "Error getting images by date"};
+  }
+}
+export async function getAlbumsByDate(startingDate: Date, endingDate: Date) {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+
+  try {
+    const getAlbums = await db.query.albums.findMany({
+      where: (model, {gte, lte}) => gte(model.createdAt, startingDate) && lte(model.createdAt, endingDate),
+      orderBy: (model, {desc}) => desc(model.createdAt),
+    });
+    return getAlbums;
+  }catch(error) {
+    console.error("Error getting images by date:", error);
+    return {error: "Error getting images by date"};
+  }
+}

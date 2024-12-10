@@ -49,7 +49,7 @@ export function AlbumsPage({ children }: { children?: React.ReactNode }) {
                 <Button
                   onClick={async () => {
                     try {
-                      await makeAlbum(name); // Replace this with your actual function
+                      await makeAlbum(name);
                       router.refresh();
                       toast.success("Album created successfully!");
                     } catch (error) {
