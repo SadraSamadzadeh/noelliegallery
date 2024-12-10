@@ -18,9 +18,9 @@ export default function Header() {
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   })
-    const {isLoaded, isSignedIn, user} = useUser()
+    const {isLoaded, isSignedIn, user} = useUser();
   return (
-    <div className="bg-blue-500 rounded-lg h-[250px] p-5 flex justify-between">
+    <div className="bg-custom-gradient-2 rounded-xl h-[250px] p-5 flex justify-between">
         <div className='flex flex-col items-center justify-evenly px-3'>
 
 

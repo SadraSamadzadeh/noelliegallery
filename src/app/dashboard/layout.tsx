@@ -6,7 +6,7 @@ export default function layout({
     children: React.ReactNode
 }) {
   return (
-    <div className='p-10'>
+    <div className='p-20 pt-10 h-screen'>
         {children}
     </div>
   )
