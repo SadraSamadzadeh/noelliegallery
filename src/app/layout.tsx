@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 import "@uploadthing/react/styles.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import TopNav from "./_components/topnav";
@@ -43,7 +43,9 @@ export default async function RootLayout({
           <body className="">
             <div className="">
               <TopNav>
-                <UploadComponent myAlbums={myAlbums} />
+                <SignedIn>
+                  <UploadComponent myAlbums={myAlbums} />
+                </SignedIn>
               </TopNav>
               <main className="">
                 {children}

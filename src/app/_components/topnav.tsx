@@ -49,7 +49,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export default function TopNav({children} : {children: React.ReactNode}) {
+export default function TopNav({children} : {children?: React.ReactNode}) {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef();
   const MobileNav = () => {
