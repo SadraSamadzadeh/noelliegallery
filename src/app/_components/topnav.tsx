@@ -47,13 +47,41 @@ const components: { title: string; href: string; description: string }[] = [
       "Take a look at your dashboard to view your data and statistics",
   },
 ]
+
 export default function TopNav({children} : {children: React.ReactNode}) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const MobileNav = () => {
+    return (
+      <>
+      <div className="w-full flex justify-center p-10" onClick={() => setIsOpen(!isOpen)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M17.25 6.75L6.75 17.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M6.75 6.75L17.25 17.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+      <div className=" w-full h-full flex flex-col justify-around">
+        <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
+                Dashboard
+          </div >
+          <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
+                  Albums
+        </div> 
+        <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
+                Home
+        </div>
+          <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
+                  Github
+        </div>
+      </div>
+      
+      </>
+    )
+  }
   return (
     <div className="mb-10">
       <NavbarLayout>
         <div className="flex justify-around items-center gap-5 w-full sm:hidden">
-          <div className="">
+          <div className="hover:bg-slate-600 p-2 rounded-lg" onClick={() => setIsOpen(!isOpen)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M4.74988 5.75012L4.74988 6.25013C4.74988 6.80241 5.19759 7.25013 5.74988 7.25013L18.2501 7.25013C18.8024 7.25013 19.2501 6.80241 19.2501 6.25013V5.75012C19.2501 5.19784 18.8024 4.75012 18.2501 4.75012L5.74988 4.75012C5.19759 4.75012 4.74988 5.19784 4.74988 5.75012Z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M4.74988 11.7501L4.74988 12.2501C4.74988 12.8024 5.19759 13.2501 5.74988 13.2501L18.2501 13.2501C18.8024 13.2501 19.2501 12.8024 19.2501 12.2501V11.7501C19.2501 11.1978 18.8024 10.7501 18.2501 10.7501L5.74988 10.7501C5.19759 10.7501 4.74988 11.1978 4.74988 11.7501Z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -82,9 +110,7 @@ export default function TopNav({children} : {children: React.ReactNode}) {
           </div>
           {/* user button */}
         </div>
-        <div>
-
-        </div>
+        
         {/* this is for desktop */}
     <NavigationMenu className="hidden sm:flex w-full">
       <NavigationMenuList>
@@ -161,6 +187,10 @@ export default function TopNav({children} : {children: React.ReactNode}) {
       </SignedOut>
     </div>
     </NavbarLayout>
+    <div className={` ${isOpen ? "flex h-full w-full opacity-80 z-10 fixed top-0 left-0 bg-black flex-col gap-5 items-center" : "hidden"} sm:hidden`}>
+      <MobileNav />
+              
+    </div>
 </div>
     
   )

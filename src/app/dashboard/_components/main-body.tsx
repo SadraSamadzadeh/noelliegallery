@@ -137,7 +137,7 @@ export default function MainBody() {
             </div>
           <Chart />
             </div>
-        <div id="#right-container" className='flex flex-col items-center justify-between w-full sm:w-1/2 gap-5'> 
+        <div id="#right-container" className='flex flex-col items-center justify-between w-full sm:w-1/2 gap-5 sm:gap-20'> 
             <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[250px]'>
               {albums.length > 0 && albums.map((album, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={album.id + " - " + index}>
