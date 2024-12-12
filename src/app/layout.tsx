@@ -24,7 +24,6 @@ import UploadComponent from "~/components/upload-component";
 
 export default async function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
   modal: React.ReactNode;
@@ -50,8 +49,6 @@ export default async function RootLayout({
                 {children}
               </main>
             </div>
-            {modal}
-            <div id="modal-root"/>
             <Toaster  />
           </body>
       </html>
