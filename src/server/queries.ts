@@ -153,3 +153,20 @@ export async function getAlbumsByDate(startingDate: Date, endingDate: Date) {
     return {error: "Error getting images by date"};
   }
 }
+
+export async function getTotalImages() {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+    const getImages = await db.query.images.findMany({
+      where: (model, {eq}) => eq(model.userId, userId),
+    });
+    return getImages.length;
+}
+export async function getTotalAlbums() {
+  const {userId} : {userId: string | null} = await auth();
+  if (!userId) return {error: "Unauthorized"};
+    const getAlbums = await db.query.albums.findMany({
+      where: (model, {eq}) => eq(model.userId, userId),
+    });
+    return getAlbums.length;
+}

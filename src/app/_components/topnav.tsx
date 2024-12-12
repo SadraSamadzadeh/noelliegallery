@@ -41,21 +41,10 @@ const components: { title: string; href: string; description: string }[] = [
       "Take a look at all of your albums or add new ones",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
+    title: "Dashboard",
+    href: "/dashboard",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Take a look at your dashboard to view your data and statistics",
   },
 ]
 export default function TopNav({children} : {children: React.ReactNode}) {

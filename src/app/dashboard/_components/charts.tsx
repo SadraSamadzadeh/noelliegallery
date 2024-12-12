@@ -4,12 +4,12 @@ import { Bar, BarChart,  CartesianGrid, XAxis  } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
 export default function Chart() {
     const chartData = [
-        { month: "January", desktop: 186, mobile: 80 },
-        { month: "February", desktop: 305, mobile: 200 },
-        { month: "March", desktop: 237, mobile: 120 },
-        { month: "April", desktop: 73, mobile: 190 },
-        { month: "May", desktop: 209, mobile: 130 },
-        { month: "June", desktop: 214, mobile: 140 },
+        { month: "January", desktop: 2, mobile: 3 },
+        { month: "February", desktop: 5, mobile: 1 },
+        { month: "March", desktop: 1, mobile: 4 },
+        { month: "April", desktop: 3, mobile: 5 },
+        { month: "May", desktop: 2, mobile: 3 },
+        { month: "June", desktop: 4, mobile: 1 },
       ]
       const chartConfig = {
         desktop: {
@@ -22,8 +22,8 @@ export default function Chart() {
         },
       } satisfies ChartConfig
   return (
-    <div id="#chart-container" className='w-full'>
-             <ChartContainer config={chartConfig} className="h-[200px] w-full">
+    <div id="#chart-container" className='w-full h-full'>
+             <ChartContainer config={chartConfig} className="h-full w-full">
                 <BarChart accessibilityLayer data={chartData}>
                     <CartesianGrid vertical={false} />
                     <XAxis

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react' 
 import Chart from './charts'
-import { getAlbumsByDate, getImagesByDate } from '~/server/queries';
+import { getAlbumsByDate, getImagesByDate, getTotalAlbums, getTotalImages } from '~/server/queries';
 import {useUser} from '@clerk/nextjs'
 import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
@@ -34,6 +34,8 @@ type Album = {
 export default function MainBody() {
     const [albums, setAlbums] = useState(Array<Album>());
     const [images, setImages] = useState(Array<Image>());
+    const [totalImages, setTotalImages] = useState(0);
+    const [totalAlbums, setTotalAlbums] = useState(0);
     const currentDate = new Date()
     const [date, setDate] = React.useState<DateRange | undefined>({
       from: currentDate,
@@ -52,65 +54,92 @@ export default function MainBody() {
             setAlbums(updatedAlbums);
           }
         }
+        const getNumberOfImagesAndAlbums = async () => {
+          const totalImages = await getTotalImages();
+          const totalAlbums = await getTotalAlbums();
+          if (typeof totalImages === 'number' && typeof totalAlbums === 'number') {
+            setTotalImages(totalImages);
+            setTotalAlbums(totalAlbums);
+          }
+        }
+        getNumberOfImagesAndAlbums();
         updateDate();
       }, [date])
   return (
 <div className='w-full border rounded-xl border-gray-400  bg-gray-800 flex-col h-full'>
-<div className="bg-custom-gradient-2 rounded-xl h-[250px] p-5 flex justify-between">
-          <div className='flex flex-col items-center justify-evenly px-3'>
-  
-  
-                  <div className="font-semibold text-5xl">
-                      Welcome Back,
-                      <p>{user?.firstName} {user?.lastName}</p>
-                  </div>
-          </div>
-          <div className="flex items-center justify-end gap-3 mt-auto">
-              {/* date picker component here */}
-              <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              id="date"
-              variant={"outline"}
-              className={cn(
-                "w-[300px] justify-start text-left font-normal",
-                !date && "text-muted-foreground"
-              )}
-            >
-              <CalendarIcon />
-              {date?.from ? (
-                date.to ? (
-                  <>
-                    {format(date.from, "LLL dd, y")} -{" "}
-                    {format(date.to, "LLL dd, y")}
-                  </>
+  <div className="bg-custom-gradient-2 rounded-xl h-[250px] p-5 flex justify-between">
+            <div className='flex flex-col items-center justify-evenly px-3'>
+    
+    
+                    <div className="font-semibold text-5xl">
+                        Welcome Back,
+                        <p>{user?.firstName} {user?.lastName}</p>
+                    </div>
+            </div>
+            <div className="flex items-center justify-end gap-3 mt-auto">
+                {/* date picker component here */}
+                <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                id="date"
+                variant={"outline"}
+                className={cn(
+                  "w-[300px] justify-start text-left font-normal",
+                  !date && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon />
+                {date?.from ? (
+                  date.to ? (
+                    <>
+                      {format(date.from, "LLL dd, y")} -{" "}
+                      {format(date.to, "LLL dd, y")}
+                    </>
+                  ) : (
+                    format(date.from, "LLL dd, y")
+                  )
                 ) : (
-                  format(date.from, "LLL dd, y")
-                )
-              ) : (
-                <span>Pick a date</span>
-              )}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              initialFocus
-              mode="range"
-              defaultMonth={date?.from}
-              selected={date}
-              onSelect={setDate}
-              numberOfMonths={2}
-            />
-          </PopoverContent>
-        </Popover>  
-          </div>
-      </div>
-    <div className='w-full rounded-xl bg-gray-800 p-10 flex '>
-            <div id="#left-container" className='flex flex-col items-center justify-between w-1/2 gap-10'>
+                  <span>Pick a date</span>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                initialFocus
+                mode="range"
+                defaultMonth={date?.from}
+                selected={date}
+                onSelect={setDate}
+                numberOfMonths={2}
+              />
+            </PopoverContent>
+          </Popover>  
+            </div>
+        </div>
+    <div className='w-full rounded-xl bg-gray-800 p-10 gap-10 flex '>
+            <div id="#left-container" className='flex flex-col items-center justify-evenly w-1/2 gap-10'>
+            {/* this is for more stuff later when we have more data to show as analytics but it will be mentioned here only so that next time it would be easy to config */}
+            <div className='flex items-center justify-between gap-4 w-full h-full'>
+                <div id="#total-albums" className='bg-gray-600 rounded-lg p-5 h-full w-full flex flex-col items-center min-w-[290px]'>  
+                  <div className='font-semibold text-lg'>
+                    Your total Images Uploaded: 
+                  </div>
+                  <div className='font-semibold text-lg'>
+                  {totalImages}
+                  </div>
+                </div>
+                <div id="#total-images" className='bg-gray-600 rounded-lg p-5 h-full w-full flex flex-col items-center min-w-[290px]'>
+                  <div className='font-semibold text-lg'>
+                  Your total Albums Made: 
+                  </div>
+                  <div className='font-semibold text-lg'>
+                  {totalAlbums}
+                  </div>
+                </div>
+            </div>
           <Chart />
             </div>
         <div id="#right-container" className='flex flex-col items-center justify-between w-1/2 gap-5'> 
-
             <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[500px]'>
               {albums.length > 0 && albums.map((album, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={album.id + " - " + index}>
