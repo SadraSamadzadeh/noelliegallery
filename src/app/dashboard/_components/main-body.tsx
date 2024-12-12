@@ -66,17 +66,15 @@ export default function MainBody() {
         updateDate();
       }, [date, totalImages, totalAlbums])
   return (
-<div className='w-full border rounded-xl border-gray-400  bg-gray-800 flex-col h-full'>
-  <div className="bg-custom-gradient-2 rounded-xl h-[250px] p-5 flex justify-between">
-            <div className='flex flex-col items-center justify-evenly px-3'>
-    
-    
-                    <div className="font-semibold text-5xl">
+<div className='w-full border rounded-xl border-gray-400  bg-gray-800 flex-col'>
+  <div className="bg-custom-gradient-2 flex-col rounded-xl p-5 flex justify-center sm:justify-between sm:flex-row gap-2 sm:min-h-[250px]">
+            <div className='flex flex-col sm:items-center sm:justify-center px-3'>
+                    <div className="font-semibold text-3xl sm:text-5xl">
                         Welcome Back,
                         <p>{user?.firstName} {user?.lastName}</p>
                     </div>
             </div>
-            <div className="flex items-center justify-end gap-3 mt-auto">
+            <div className="flex items-center justify-center sm:justify-end gap-3 sm:mt-auto">
                 {/* date picker component here */}
                 <Popover>
             <PopoverTrigger asChild>
@@ -116,11 +114,11 @@ export default function MainBody() {
           </Popover>  
             </div>
         </div>
-    <div className='w-full rounded-xl bg-gray-800 p-10 gap-10 flex'>
-            <div id="#left-container" className='flex flex-col items-center justify-evenly w-1/2 gap-10'>
+    <div className='w-full rounded-xl bg-gray-800 gap-5 sm:gap-10 flex items-center sm:p-10 justify-center flex-col sm:flex-row p-2'>
+            <div id="#left-container" className='flex flex-col items-center justify-evenly w-full sm:w-1/2 gap-10'>
             {/* this is for more stuff later when we have more data to show as analytics but it will be mentioned here only so that next time it would be easy to config */}
             <div className='flex flex-col items-center gap-4 w-full xl:flex-row 2xl:justify-center'>
-                <div id="#total-albums" className='bg-gray-600 rounded-lg p-3 w-full flex flex-col items-center min-w-[290px] max-w-[350px]'>  
+                <div id="#total-albums" className='bg-gray-600 rounded-lg p-3 w-full flex flex-col items-center max-w-[350px]'>  
                   <div className='font-semibold text-lg'>
                     Your total Images Uploaded: 
                   </div>
@@ -128,7 +126,7 @@ export default function MainBody() {
                   {totalImages}
                   </div>
                 </div>
-                <div id="#total-images" className='bg-gray-600 rounded-lg p-3 w-full flex flex-col items-center min-w-[290px] max-w-[350px]'>
+                <div id="#total-images" className='bg-gray-600 rounded-lg p-3 w-full flex flex-col items-center max-w-[350px]'>
                   <div className='font-semibold text-lg'>
                   Your total Albums Made: 
                   </div>
@@ -139,8 +137,8 @@ export default function MainBody() {
             </div>
           <Chart />
             </div>
-        <div id="#right-container" className='flex flex-col items-center justify-between w-1/2 gap-5'> 
-            <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[250px] 2xl:max-h-[500px]'>
+        <div id="#right-container" className='flex flex-col items-center justify-between w-full sm:w-1/2 gap-5'> 
+            <div id="#latest-albums-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[250px]'>
               {albums.length > 0 && albums.map((album, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={album.id + " - " + index}>
                 <div id="#icon">
@@ -164,7 +162,7 @@ export default function MainBody() {
               ))}
               {albums.length === 0 && <div>No Albums</div>}
             </div>
-            <div id="#latest-images-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[250px] 2xl:max-h-[500px]'>
+            <div id="#latest-images-added" className='flex flex-col bg-gray-600 rounded-lg p-5 w-full gap-5 overflow-y-scroll max-h-[250px]'>
             {images.length > 0 && images.map((image, index) => (
                 <div className='min-h-[90px] bg-gray-500 rounded-xl flex justify-start items-center p-5 gap-3' key={image.id + " - " + index}>
                 <div id="#icon">
