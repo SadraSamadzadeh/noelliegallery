@@ -19,7 +19,7 @@ import {
 import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu"
 import Link from "next/link";
 import NavbarLayout from "./navbar-layout";
-import React from "react";
+import React, { useState } from "react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -48,11 +48,45 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 export default function TopNav({children} : {children: React.ReactNode}) {
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="mb-10">
       <NavbarLayout>
-    <NavigationMenu>
+        <div className="flex justify-around items-center gap-5 w-full sm:hidden">
+          <div className="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4.74988 5.75012L4.74988 6.25013C4.74988 6.80241 5.19759 7.25013 5.74988 7.25013L18.2501 7.25013C18.8024 7.25013 19.2501 6.80241 19.2501 6.25013V5.75012C19.2501 5.19784 18.8024 4.75012 18.2501 4.75012L5.74988 4.75012C5.19759 4.75012 4.74988 5.19784 4.74988 5.75012Z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4.74988 11.7501L4.74988 12.2501C4.74988 12.8024 5.19759 13.2501 5.74988 13.2501L18.2501 13.2501C18.8024 13.2501 19.2501 12.8024 19.2501 12.2501V11.7501C19.2501 11.1978 18.8024 10.7501 18.2501 10.7501L5.74988 10.7501C5.19759 10.7501 4.74988 11.1978 4.74988 11.7501Z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4.74988 17.7501L4.74988 18.2501C4.74988 18.8024 5.19759 19.2501 5.74988 19.2501L18.2501 19.2501C18.8024 19.2501 19.2501 18.8024 19.2501 18.2501V17.7501C19.2501 17.1978 18.8024 16.7501 18.2501 16.7501L5.74988 16.7501C5.19759 16.7501 4.74988 17.1978 4.74988 17.7501Z" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          </div>
+          <div className="font-normal text-lg">
+            Noellie Gallery
+          </div>
+
+          {/* upload icon */}
+          <div className=" flex gap-4 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4.75 14.75V16.25C4.75 17.9069 6.09315 19.25 7.75 19.25H16.25C17.9069 19.25 19.25 17.9069 19.25 16.25V14.75" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 14.25L12 5" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M8.75 8.25L12 4.75L15.25 8.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton >
+              <Button variant={"outline"}>Sign In</Button>
+            </SignInButton>
+            </SignedOut>
+          </div>
+          {/* user button */}
+        </div>
+        <div>
+
+        </div>
+        {/* this is for desktop */}
+    <NavigationMenu className="hidden sm:flex w-full">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
@@ -110,13 +144,13 @@ export default function TopNav({children} : {children: React.ReactNode}) {
           </Link>
         </NavigationMenuItem> 
             <SignedIn>
-              <NavigationMenuLink>
+              <NavigationMenuLink className="hidden sm:block">
                {children}
               </NavigationMenuLink>
             </SignedIn>
       </NavigationMenuList>
     </NavigationMenu>
-    <div className="flex gap-10">
+    <div className="gap-10 ml-auto hidden sm:flex">
       <SignedIn>
         <UserButton />          
     </SignedIn>
@@ -126,11 +160,8 @@ export default function TopNav({children} : {children: React.ReactNode}) {
           </SignInButton>
       </SignedOut>
     </div>
-      
-
-      
     </NavbarLayout>
-    </div>
+</div>
     
   )
 }

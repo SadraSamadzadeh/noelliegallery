@@ -37,12 +37,12 @@ export default async function RootLayout({
       baseTheme: shadesOfPurple,
     }}
     >
-      <html lang="en" className={`${GeistSans.variable} dark overflow-x-hidden`}>
+      <html lang="en" className={`${GeistSans.variable} dark overflow-auto`}>
       <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
           <body className="">
-            <div className="grid grid-rows-[auto,1fr]">
+            <div className="">
               <TopNav>
                 <UploadComponent myAlbums={myAlbums} />
               </TopNav>
