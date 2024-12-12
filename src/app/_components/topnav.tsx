@@ -19,7 +19,8 @@ import {
 import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu"
 import Link from "next/link";
 import NavbarLayout from "./navbar-layout";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import UploadComponent from "~/components/upload-component";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -50,6 +51,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function TopNav({children} : {children: React.ReactNode}) {
   const [isOpen, setIsOpen] = useState(false);
+  const buttonRef = useRef();
   const MobileNav = () => {
     return (
       <>
@@ -64,13 +66,13 @@ export default function TopNav({children} : {children: React.ReactNode}) {
                 Dashboard
           </div >
           <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                  Albums
+                Albums
         </div> 
         <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
                 Home
         </div>
           <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                  Github
+                Github
         </div>
       </div>
       
@@ -94,11 +96,7 @@ export default function TopNav({children} : {children: React.ReactNode}) {
 
           {/* upload icon */}
           <div className=" flex gap-4 items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M4.75 14.75V16.25C4.75 17.9069 6.09315 19.25 7.75 19.25H16.25C17.9069 19.25 19.25 17.9069 19.25 16.25V14.75" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M12 14.25L12 5" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M8.75 8.25L12 4.75L15.25 8.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {children}
           <SignedIn>
               <UserButton />
             </SignedIn>
