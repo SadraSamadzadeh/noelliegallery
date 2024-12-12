@@ -36,7 +36,7 @@ export default async function RootLayout({
       baseTheme: shadesOfPurple,
     }}
     >
-      <html lang="en" className={`${GeistSans.variable} dark overflow-auto`}>
+      <html lang="en" className={`${GeistSans.variable} dark overflow-auto scroll-smooth`}>
       <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
@@ -47,7 +47,7 @@ export default async function RootLayout({
                   <UploadComponent myAlbums={myAlbums} />
                 </SignedIn>
               </TopNav>
-              <main className="">
+              <main className="py-10">
                 {children}
               </main>
             </div>

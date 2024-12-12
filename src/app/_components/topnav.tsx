@@ -20,7 +20,6 @@ import { navigationMenuTriggerStyle } from "../../components/ui/navigation-menu"
 import Link from "next/link";
 import NavbarLayout from "./navbar-layout";
 import React, { useRef, useState } from "react";
-import UploadComponent from "~/components/upload-component";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -80,7 +79,7 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
     )
   }
   return (
-    <div className="mb-10">
+    <div className="">
       <NavbarLayout>
         <div className="flex justify-around items-center gap-5 w-full sm:hidden">
           <div className="hover:bg-slate-600 p-2 rounded-lg" onClick={() => setIsOpen(!isOpen)}>
@@ -132,10 +131,10 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
+              <ListItem href="#intro" title="Introduction">
                 How the website works and stuff you know!
               </ListItem>
-              <ListItem href="/docs/installation" title="About">
+              <ListItem href="#about" title="About">
                 About the project and Sadra (me :D)
               </ListItem>
               <ListItem href="/random-not-found" title="Not Found">

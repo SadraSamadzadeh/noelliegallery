@@ -26,6 +26,11 @@
 - [X] Add the option to add an album
 
 - [ ] Create basic UI stuff for pages to be responsive and also make the home page --> figure out the scroll method when u click something on the navbar (For Christmas)
+    - [ ] Make the dashboard page more responsive --> and also change colors
+    - [X] Change the text color of the main page 
+    - [ ] Find proper illustrations for the about section
+    - [ ] Make the main page responsive 
+    - [ ] Make an image page for each album
 - [ ] putting a sticky topbar for the albums and images as a title in the dashboard section (right-sidebar) (For Christmas)
 
 

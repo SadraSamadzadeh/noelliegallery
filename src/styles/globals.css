@@ -55,33 +55,33 @@
   
 
   .dark {
-    --background: 220 20% 6%; /* Darker blue for dark mode */
-    --foreground: 280 30% 90%; /* Vibrant lavender */
+    --background: 0 0% 0%; /* Black for dark mode */
+    --foreground: 280 40% 95%; /* Bright and vibrant lavender */
 
-    --card: 220 20% 8%; /* Match background for cards */
-    --card-foreground: 280 30% 90%; /* Match foreground */
+    --card: 0 0% 5%; /* Very dark gray to match black background */
+    --card-foreground: 280 40% 95%; /* Match foreground */
 
-    --popover: 260 40% 10%; /* Rich vibrant purple for popovers */
-    --popover-foreground: 280 30% 85%; /* Softer lavender */
+    --popover: 280 80% 15%; /* Deep vibrant purple for popovers */
+    --popover-foreground: 280 50% 90%; /* Softer lavender */
 
-    --primary: 280 50% 22%; /* Slightly darker vibrant purple for primary */
-    --primary-foreground: 220 20% 90%; /* Bluish-white */
+    --primary: 280 70% 25%; /* Stronger vibrant purple for primary */
+    --primary-foreground: 0 0% 95%; /* Bright white for contrast */
 
-    --secondary: 200 40% 20%; /* Muted teal */
-    --secondary-foreground: 280 50% 75%; /* Contrasting vibrant purple */
+    --secondary: 270 90% 40%; /* Intense vibrant purple */
+    --secondary-foreground: 0 0% 100%; /* Pure white for contrast */
 
-    --muted: 220 15% 12%; /* Deeper dark blue for muted elements */
-    --muted-foreground: 280 15% 60%; /* Softer purple-gray */
+    --muted: 0 0% 15%; /* Dark muted gray for muted elements */
+    --muted-foreground: 280 20% 70%; /* Softer lavender-gray */
 
-    --accent: 300 50% 20%; /* Deeper rich magenta accent */
-    --accent-foreground: 280 30% 85%; /* Vibrant lavender */
+    --accent: 290 90% 30%; /* Rich and vibrant magenta accent */
+    --accent-foreground: 0 0% 95%; /* Bright white for contrast */
 
-    --destructive: 0 60% 22%; /* Darker crimson for destructive actions */
-    --destructive-foreground: 280 30% 85%; /* Softer lavender */
+    --destructive: 0 70% 25%; /* Dark crimson for destructive actions */
+    --destructive-foreground: 280 40% 85%; /* Softer lavender */
 
-    --border: 220 15% 18%; /* Neutral deep blue for borders */
-    --input: 220 20% 10%; /* Slightly darker deep blue for inputs */
-    --ring: 280 50% 20%; /* Vibrant purple for focus rings */
+    --border: 0 0% 12%; /* Neutral dark gray for borders */
+    --input: 0 0% 8%; /* Darker black-gray for inputs */
+    --ring: 270 90% 40%; /* Intense vibrant purple for focus rings */
   }
 }
 

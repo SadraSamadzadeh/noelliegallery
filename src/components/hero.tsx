@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button } from './ui/button'
 import starsBg from '~/../public/stars.png'
-import { SignedIn, SignInButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs'
 
 export default function hero() {
   return (
-    <section className='md:h-[800px] h-[492px] flex items-center overflow-hidden relative bg-mask-gradient' 
+    <section className='md:h-[1000px] h-[492px] flex items-center overflow-hidden relative bg-mask-gradient' 
     style={{ backgroundImage: `url(${starsBg.src})` }}>
-        <div className='absolute inset-0 bg-custom-gradient-2'></div>
+        <div className='absolute inset-0'></div>
         {/* start planet */}
         <div className='absolute h-64 w-64 md:h-96 md:w-96 bg-purple-500 rounded-full border-white/20  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-custom-gradient shadow-custom-shadow'>
         </div>
@@ -35,11 +35,11 @@ export default function hero() {
            >Beautifully designed gallery for uploading your photos</p>
            <div className='flex justify-center mt-5'>
 
-          <SignedIn>
+          <SignedOut>
             <SignInButton>
               <Button>Sign In</Button>
             </SignInButton>
-          </SignedIn>
+          </SignedOut>
            </div>
         </div>
     </section>

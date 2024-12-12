@@ -16,7 +16,7 @@ export default function OneAlbum({params}) {
     <div>
         {imagesInAlbum.map((images, index) => (
             <div key={images.id + " - " + index}>
-                <Image src={images.url} alt={images.name} width={300} height={300}/>
+                <Image src={images.url} alt={images.name} width={300} height={300}></Image>
             </div>
         ))}
     </div>
