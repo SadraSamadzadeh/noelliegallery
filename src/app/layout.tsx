@@ -31,7 +31,8 @@ export default async function RootLayout({
 }) {
   const myAlbums = await getAlbums();
   return (
-    <ClerkProvider 
+    <ClerkProvider
+    signInFallbackRedirectUrl="/dashboard" 
     appearance={ {
       baseTheme: shadesOfPurple,
     }}
@@ -40,19 +41,19 @@ export default async function RootLayout({
       <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-        <body className="">
-          <div className="grid grid-rows-[auto,1fr]">
-            <TopNav>
-              <UploadComponent myAlbums={myAlbums} />
-            </TopNav>
-            <main className="">
-              {children}
-            </main>
-          </div>
-          {modal}
-          <div id="modal-root"/>
-          <Toaster  />
-        </body>
+          <body className="">
+            <div className="grid grid-rows-[auto,1fr]">
+              <TopNav>
+                <UploadComponent myAlbums={myAlbums} />
+              </TopNav>
+              <main className="">
+                {children}
+              </main>
+            </div>
+            {modal}
+            <div id="modal-root"/>
+            <Toaster  />
+          </body>
       </html>
     </ClerkProvider>
     

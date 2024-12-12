@@ -64,7 +64,7 @@ export default function MainBody() {
         }
         getNumberOfImagesAndAlbums();
         updateDate();
-      }, [date])
+      }, [date, totalImages, totalAlbums])
   return (
 <div className='w-full border rounded-xl border-gray-400  bg-gray-800 flex-col h-full'>
   <div className="bg-custom-gradient-2 rounded-xl h-[250px] p-5 flex justify-between">

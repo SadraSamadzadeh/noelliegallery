@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import {getMyImages } from "~/server/queries";
 import Image from "next/image";

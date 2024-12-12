@@ -28,7 +28,7 @@ const useUploadThingInputProps = ( albumId: number,...args: Input) => {
     inputProps: {
       onChange,
       multiple: ($ut.permittedFileInfo?.config?.image?.maxFileCount ?? 1) > 1,
-      accept: "image/*",
+      accept: "image/* video/*",
     },
     isUploading: $ut.isUploading,
   };
