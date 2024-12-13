@@ -12,7 +12,7 @@ export default function AboutSection() {
               <p className="font-bold text-5xl bg-[radial-gradient(100%_100%_at_top_left,white,rgb(74,32,138,.5))] text-transparent bg-clip-text">About</p>
           </div>
           <div className="text-xl">
-            Uploading images is easy with Noellie Gallery. Just upload your images and they will be uploaded to your albums. You can also add albums to your account and upload images to them. you are also able to view your statistics and overview in the dashboard panel
+           This project was made during my 4th year of school at first started as a birthday gift to my girlfriend who the name of the app is after and then turned into a larger scale project with promising UI and beautiful components 
           </div>
         </div>
       </div>
