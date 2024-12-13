@@ -21,10 +21,8 @@ export default function Chart() {
         },
       } satisfies ChartConfig
   return (
-    <div id="#chart-container" className='w-full h-full'>
-             <ChartContainer config={chartConfig} className="h-full w-full">
+             <ChartContainer config={chartConfig} className='min-h-[250px] w-full'>
                 <BarChart accessibilityLayer data={chartData}>
-                    <CartesianGrid vertical={false} />
                     <XAxis
                     dataKey="month"
                     tickLine={false}
@@ -37,7 +35,5 @@ export default function Chart() {
                     <Bar dataKey="images" fill="var(--color-images)" radius={4} />
                 </BarChart>
     </ChartContainer>   
-    </div>
-   
   )
 }

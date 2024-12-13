@@ -6,7 +6,7 @@ export default function layout({
     children: React.ReactNode
 }) {
   return (
-    <div className='p-10 h-screen'>
+    <div className='p-10 flex justify-center'>
         {children}
     </div>
   )
