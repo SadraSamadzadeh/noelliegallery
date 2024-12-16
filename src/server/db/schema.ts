@@ -3,13 +3,17 @@
 
 import { create } from "domain";
 import { relations, sql } from "drizzle-orm";
+import {v4 as uuidv4} from 'uuid';
+
 import {
   index,
   integer,
   pgTableCreator,
   timestamp,
   varchar,
-  primaryKey
+  primaryKey,
+  uuid,
+  pgEnum
 } from "drizzle-orm/pg-core";
 
 /**
@@ -19,7 +23,7 @@ import {
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
 export const createTable = pgTableCreator((name) => `noelliegallery_${name}`);
-
+export const roleEnum = pgEnum("role", ["Moderator", "Viewer"]);
 export const images = createTable(
   "image",
   {
@@ -32,7 +36,8 @@ export const images = createTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
       () => new Date()
     ),
-    userId: varchar("userId", { length: 256 }).notNull(),
+    // i have to think if we need to assign the user id to images as well as the albums
+    userId: varchar("userId", { length: 256 }).notNull(), 
   },
   (example) => ({
     nameIndex: index("images_idx").on(example.name),
@@ -50,7 +55,7 @@ export const albums = createTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
       () => new Date()
     ),
-    userId: varchar("userId", { length: 256 }).notNull(),
+    ownerId: varchar("userId", { length: 256 }).notNull(),
   },
   (example) => ({
     nameIndex: index("albums_idx").on(example.name),
@@ -74,4 +79,34 @@ export const albumImages = createTable(
     compositePrimaryKey: primaryKey(example.albumId, example.imageId),
   })
 );
+
+export const users = createTable(
+  "users",
+  {
+    id: uuid("id")
+    .notNull()
+    .primaryKey(),
+    name: varchar("name", { length: 256 }).notNull(),
+    email: varchar("email", { length: 256 }).notNull(),
+    password: varchar("password", { length: 256 }).notNull(),
+    createdAt: timestamp("createdAt", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  }
+)
+export const collaborators = createTable(
+  "collaborators",
+  {
+   user_id: uuid("user_id")
+   .notNull()
+   .references(() => users.id),
+   album_id: integer("album_id")
+   .notNull()
+   .references(() => albums.id),
+   role: roleEnum("role").notNull().default("Viewer"),
+  },
+  (example) => ({
+    pk: primaryKey(example.user_id, example.album_id),
+  })
+)
 
