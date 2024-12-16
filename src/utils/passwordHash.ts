@@ -10,3 +10,12 @@ export const hashPassword = async (password: string): Promise<string> => {
   const hashedPassword = await bcrypt.hash(password, CUSTOM_SALT);
   return hashedPassword;
 };
+
+export const deHashPassword = async (password: string, dbPassword: string): Promise<boolean> => {
+  if (!CUSTOM_SALT) {
+    throw new Error('Custom salt is not defined in environment variables');
+  }
+
+  const correct = await bcrypt.compare(password, dbPassword);
+  return correct;
+};

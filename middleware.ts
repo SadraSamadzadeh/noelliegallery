@@ -1,22 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
-import { checkToken } from "~/middlewares/authMiddelware";
+import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-    if (req.nextUrl.pathname === "/api/auth/signup") {
-        return checkToken(req);
-    }
-    
+  console.log('✅ Middleware is running for:', req.nextUrl.pathname);
 
-
-
-
-
-
-
-
-
-    return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set('x-middleware-check', 'middleware-passed');
+  return response;
 }
+
+// Apply the middleware globally
 export const config = {
-    matcher: ["/api/:path*"],
+  matcher: '/:path*',
 };

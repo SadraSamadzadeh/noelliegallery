@@ -87,7 +87,7 @@ export const users = createTable(
     .notNull()
     .primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
-    email: varchar("email", { length: 256 }).notNull(),
+    email: varchar("email", { length: 256 }).notNull().unique(),
     password: varchar("password", { length: 1024 }).notNull(),
     createdAt: timestamp("createdAt", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
