@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function AboutSection() {
   return (
     
-        <div className='w-full flex flex-col items-center gap-10 mt-[50px] p-10 lg:flex-row lg:justify-around'>
+        <div id='about' className='w-full flex flex-col items-center gap-10 mt-[50px] min-h-[1000px] p-10 lg:flex-row lg:justify-around'>
           <div id="big" className=''>
                 <Image src="/about.png" alt='image' width={500} height={500}></Image>
           </div>

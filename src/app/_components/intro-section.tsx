@@ -1,9 +1,8 @@
 import Image from "next/image"
 import React from 'react'
-
 export default function IntroSection() {
   return (
-    <div id="#intro" className='w-full flex flex-col gap-10 mt-[50px] p-10 lg:flex-row-reverse lg:justify-around min-h-[1000px] justify-center items-center'>
+    <div id="intro" className='w-full flex flex-col gap-10 mt-[50px] p-10 lg:flex-row-reverse lg:justify-around min-h-[1000px] justify-center items-center'>
         <div className=''>
             <Image src="/intro.png" alt='image' width={500} height={500}></Image>
         </div>

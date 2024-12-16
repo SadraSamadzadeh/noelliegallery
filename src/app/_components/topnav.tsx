@@ -47,8 +47,14 @@ const components: { title: string; href: string; description: string }[] = [
       "Take a look at your dashboard to view your data and statistics",
   },
 ]
-
+export function scrollToElement(id: string) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
 export default function TopNav({children} : {children?: React.ReactNode}) {
+
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef();
   const MobileNav = () => {
@@ -117,9 +123,8 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <a href="/"
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -131,13 +136,13 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="#intro" title="Introduction">
+              <ListItem onClick={() => scrollToElement("intro")} href="#intro" title="Introduction">
                 How the website works and stuff you know!
               </ListItem>
-              <ListItem href="#about" title="About">
+              <ListItem onClick={() => scrollToElement("about")} title="About">
                 About the project and Sadra (me :D)
               </ListItem>
-              <ListItem href="/random-not-found" title="Not Found">
+              <ListItem  href="/random-not-found" title="Not Found">
                 Go to 404 page for a cute surprise
               </ListItem>
             </ul>

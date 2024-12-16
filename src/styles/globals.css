@@ -32,7 +32,7 @@
     --input: 220 20% 12%; /* Slightly lighter deep blue for inputs */
     --ring: 280 50% 25%; /* Vibrant purple for focus rings */
 
-    --radius: 0.5rem; /* Rounded corners */
+    --radius: 0.5rem; /* Rounded corners */ --sidebar-background: 0 0% 98%; --sidebar-foreground: 240 5.3% 26.1%; --sidebar-primary: 240 5.9% 10%; --sidebar-primary-foreground: 0 0% 98%; --sidebar-accent: 240 4.8% 95.9%; --sidebar-accent-foreground: 240 5.9% 10%; --sidebar-border: 220 13% 91%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
   
   @layer base {
@@ -81,7 +81,8 @@
 
     --border: 0 0% 12%; /* Neutral dark gray for borders */
     --input: 0 0% 8%; /* Darker black-gray for inputs */
-    --ring: 270 90% 40%; /* Intense vibrant purple for focus rings */
+    --ring: 270 90% 40%; /* Intense vibrant purple for focus rings */ 
+    --sidebar-background: 240 5.9% 10%; --sidebar-foreground: 240 4.8% 95.9%; --sidebar-primary: 224.3 76.3% 48%; --sidebar-primary-foreground: 0 0% 100%; --sidebar-accent: 240 3.7% 15.9%; --sidebar-accent-foreground: 240 4.8% 95.9%; --sidebar-border: 240 3.7% 15.9%; --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -125,5 +126,13 @@ dialog:modal {
 @keyframes spinner_AtaB {
   100% {
     transform: rotate(360deg);
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
