@@ -5,7 +5,7 @@ const secret = process.env.SECRET_KEY || "secret";
 export interface AuthPayload {
     name: string;
     email: string;
-    password: string;
+    id: string;
 }
 
 
