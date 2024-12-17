@@ -60,24 +60,24 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
   const MobileNav = () => {
     return (
       <>
-      <div className="w-full flex justify-center p-10" onClick={() => setIsOpen(!isOpen)}>
+      <div className="w-full flex justify-start p-10" onClick={() => setIsOpen(!isOpen)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
           <path d="M17.25 6.75L6.75 17.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M6.75 6.75L17.25 17.25" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
-      <div className=" w-full h-full flex flex-col justify-around">
-        <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                Dashboard
+      <div className=" w-full h-full flex flex-col justify-start pl-10 gap-10">
+        <div className="w-full font-bold flex justify-start items-center">
+                <a href="/">Home</a>
           </div >
-          <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                Albums
+          <div className=" w-full font-bold flex justify-start items-center">
+		  		<a href="/dashboard">Dashboard</a>
         </div> 
-        <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                Home
+        <div className="w-full font-bold flex justify-start items-center">
+				<a href="/albums">Albums</a>
         </div>
-          <div className="w-full text-center font-bold h-1/4 flex justify-center border-y border-gray-900 items-center">
-                Github
+          <div className= "w-full font-bold flex justify-start items-center">
+		  		<a href="https://github.com/SadraSamadzadeh">Github</a>	
         </div>
       </div>
       
@@ -189,9 +189,8 @@ export default function TopNav({children} : {children?: React.ReactNode}) {
       </SignedOut>
     </div>
     </NavbarLayout>
-    <div className={` ${isOpen ? "flex h-full w-full opacity-80 z-10 fixed top-0 left-0 bg-black flex-col gap-5 items-center" : "hidden"} sm:hidden`}>
-      <MobileNav />
-              
+    <div className={` ${isOpen ? "flex h-full w-3/4 z-10 fixed top-0 left-0 bg-card flex-col gap-5 items-center" : "hidden"} sm:hidden`}>
+      <MobileNav />      
     </div>
 </div>
     
